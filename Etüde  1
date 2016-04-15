@@ -1,0 +1,40 @@
+\version "2.19.39"
+\language "deutsch"
+RH =
+\relative c'' {
+  \partial 4
+  \acciaccatura a'8 g8.( fis16
+  g8)-. r \acciaccatura g8 e'-. r g,-. r \acciaccatura g8 f'8-. r
+}
+
+LH = 
+\relative c' {
+  \clef bass
+  \grace s8 r4
+  \clef treble
+  < c-1 e-2 g-4 >8 r < c e g >8 r < g h f' > r < g h f' > r
+}
+
+\score
+{
+  \new PianoStaff
+  <<
+    \new Staff="Discant" {
+      \set Staff.instrumentName="Discant"
+      <<
+        \new Voice
+        \RH
+      >>
+    }
+    \new Staff="Bass" {
+      \set Staff.instrumentName="Bass"
+      <<
+      
+      \LH
+      >>
+    }
+
+  >>
+  %\layout {  }
+  %\midi { }
+}
