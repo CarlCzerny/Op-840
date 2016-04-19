@@ -2,19 +2,82 @@
 \language "deutsch"
 RH =
 \relative c'' {
-  \partial 4
-  \acciaccatura a'8 g8.(-3 fis16
-  g8)-.-1 r \acciaccatura g8 e'-. r g,-.-1 r \acciaccatura g8 f'8-. r
+  \partial 4 \accidentalStyle modern
+  \override Flag.stroke-style = ##f
+  \slashedGrace a'8 g8.(-3 fis16
+  g8)-.-1 r \slashedGrace g8 e'-. r g,-.-1 r \slashedGrace g8 d'8-. r
+g,8-. r \slashedGrace g8 e'-. r \slashedGrace a,8 g8.-3( fis16 g8. fis16-2
+g8-.-1) r \slashedGrace g8( d'-.) r g,8.-1( a16 g8. a16
+g8-.) r \slashedGrace g8( e'-.) r e,8.-2( c16-1 f8.-3 d16-1
+g8-.-4) r \slashedGrace g8( e'-.) r g,-. r  \slashedGrace g8 d'-. r
+g,8-. r \slashedGrace g8 c-. r \slashedGrace a8 g8.-3( fis16-1 g8. a16-4)
+< d,-1 h'-5 >8-. < e-1 c'-5 >-. <  f d' >-. < g e' >-.
+\ottava #1 < a f' >-. < h g' >-. < c a' >-. < d h' >8-.
+< e c' >8-. \ottava #0 r r4 r
+\bar ":..:"
+ \slashedGrace a,,8 g8.-3( fis16
+ g8-.) r < d f g h> r < f g h d > r \slashedGrace a8 g8.( fis16
+ g8) r < e g c >8 r < g c e > r \slashedGrace a8 g8.( fis16
+  g8-.) r < g h e >-. r < g h f' >-. r < d'-2 g-5 >-. r
+  < g,_~ d' f( >2 < g c e) >8 r
+  \slashedGrace a'8 g8.-3( fis16
+   g8-.) r \slashedGrace g8 e'-. r g,-.-1 r \slashedGrace g8 d'8-. r
+g,8-.) r \slashedGrace g8 c-. r r
+\ottava #1
+< g'-1 e'-5 >8-. < f-1 d'-5 >-. <  e c' >-. < d h' >-.
+< c a' >8-. < h g' >-. <  a f' >-. 
+\ottava #0
+< g e' >8-. < f d' >-. <  e c' >-. < d h' >-.
+<  e c' >-. r r4 r4 \bar ":|."
 }
+
+Etüde 1 C-Moll
+
+RH =
+\relative c'' {
+  \partial 4 \accidentalStyle modern
+  
+\bar ".|:"
+g4-1(
+e'-3)
+}
+
+LH = 
+\relative c' {
+  \clef bass
+  r4
+ 
+  \set fingeringOrientations = #'(left)
+ }
+
 
 LH = 
 \relative c' {
   \clef bass
   \grace s8 r4
   \clef treble
+  \set fingeringOrientations = #'(left)
   < c-1 e-2 g-4 >8 r < c e g >8 r < g h f' > r < g h f' > r
+< c-3 e-1 >8 r q r q r q r
+< h f' g >8 r q r q r q r
+< c e g >8 r q r < c-5 e-3 >4( < d f >
+< e-3 g-1 >8-.) r < c-1 e-2 g-4 >8 r < g h f' > r q r
+< c-3 e-1 >8 r q r q r q r
+< g d' f > r q r q r q r
+\clef bass
+< c e >8 r c r c, r
+r4
+g8 r < g' h > r q r r4
+g,8 r < g' c > r q r r4
+g,8 r < g' d' > r q r < g h > r
+h4-2( g c8-.) r r4
+\clef treble
+< c e g >8 r q r < h f' g >8 r q r
+< c e g >8 r q r < c e g >8 r q r
+< g d' f > r q r q r q r
+\clef bass
+< c e >8 r c r c, r
 }
-
 \score
 {
   \new PianoStaff
