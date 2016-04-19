@@ -3,8 +3,8 @@
 RH =
 \relative c'' {
   \partial 4
-  \acciaccatura a'8 g8.( fis16
-  g8)-. r \acciaccatura g8 e'-. r g,-. r \acciaccatura g8 f'8-. r
+  \acciaccatura a'8 g8.(-3 fis16
+  g8)-.-1 r \acciaccatura g8 e'-. r g,-.-1 r \acciaccatura g8 f'8-. r
 }
 
 LH = 
