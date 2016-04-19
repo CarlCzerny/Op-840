@@ -1,0 +1,59 @@
+\version "2.19.38"
+\language "deutsch"
+RH =
+\relative c'' {
+  \partial 4 \accidentalStyle modern
+  
+\bar ".|:"
+g4-1(
+e'-3)
+}
+
+LHI = 
+\relative c' {
+ \clef bass
+  \voiceOne
+ \mergeDifferentlyHeadedOn
+ \mergeDifferentlyDottedOn
+ 
+  c8
+ 
+  \set fingeringOrientations = #'(left)
+ }
+ 
+LHII = \relative c'
+ { 
+ 
+  \voiceTwo
+  c2
+ 
+  \set fingeringOrientations = #'(left)
+ }
+ 
+\score
+{
+  \new PianoStaff
+  <<
+    \new Staff="Discant" {
+      \set Staff.instrumentName="Discant"
+      <<
+        \new Voice
+        \RH
+      >>
+    }
+    \new Staff="Bass" {
+      \set Staff.instrumentName="Bass"
+	  
+      <<
+      \new Voice = "first"
+	  
+    \LHI
+  \new Voice= "second"
+    \LHII
+      >>
+    }
+
+  >>
+  %\layout {  }
+  %\midi { }
+}
