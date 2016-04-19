@@ -1,0 +1,78 @@
+\version "2.19.38"
+\language "deutsch"
+
+RH =
+\relative c'' {
+  \partial 4 \accidentalStyle modern
+ \key c \minor
+\bar ".|:"
+g4-1(
+es'-3) es( d c) g'2-5( d)
+es4-3 es( d c < h-2 d-4 >2 g)
+es'4-3 es( d c fis2-3 g-1 b4-2 g-1 fis-2 a-4) g2 r4
+\bar ":.|.:"
+g4
+}
+
+LHI =
+\relative c' {
+ \clef bass  \key c \minor
+  \voiceOne
+ \mergeDifferentlyHeadedOn
+ \mergeDifferentlyDottedOn
+  r4
+c,8 g' es g c,8 g' es g
+h, g' f g h, g' f g
+c,8 g' es g c,8 g' es g
+s1
+c,8 g' es g c,8 g' es g
+c, a' es a cis, b'-1 e,-3 b'-1
+d, b'-1 g-2 b-1 d, c' fis, c'
+g b d b s4 
+s4
+
+g8 h d h g c es c
+g8 h d h g8 h d h
+g8 h d h g c es c
+g8 h d h
+  \set fingeringOrientations = #'(left)
+ }
+
+LHII = \relative c'
+ {
+  \voiceTwo
+  r4 c,2-4 c h h c c
+  g8( h d g f es f d)
+  c2 c2
+  c cis-5 d-5 d g-4 g8 r r4
+  g2 g2 g2 g2 g2 g2 g2
+  c,2 s2 as as g g c s4
+  \set fingeringOrientations = #'(left)
+ }
+
+\score
+{
+  \new PianoStaff
+  <<
+    \new Staff="Discant" {
+      \set Staff.instrumentName="Discant"
+      <<
+        \new Voice
+        \RH
+      >>
+    }
+    \new Staff="Bass" {
+      \set Staff.instrumentName="Bass"
+      <<
+      \new Voice = "first"
+	  \relative c'
+    \LHI
+  \new Voice= "second"
+    \LHII
+      >>
+    }
+
+  >>
+  %\layout {  }
+  %\midi { }
+}
