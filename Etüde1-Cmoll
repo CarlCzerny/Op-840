@@ -11,7 +11,10 @@ es'-3) es( d c) g'2-5( d)
 es4-3 es( d c < h-2 d-4 >2 g)
 es'4-3 es( d c fis2-3 g-1 b4-2 g-1 fis-2 a-4) g2 r4
 \bar ":.|.:"
-g4
+g4-5( f4.-4 d8-2 es4-2 c-1) 
+g'( g,) g8 r g'4( f4. d8 es4 c)
+< h d g >2. g4( es') es( d c)
+c'2( fis,-2) g4-4( es d g c,) r4 r4 \bar ":|."
 }
 
 LHI =
@@ -31,10 +34,15 @@ d, b'-1 g-2 b-1 d, c' fis, c'
 g b d b s4 
 s4
 
-g8 h d h g c es c
+g8 h d h g c-2 es-1 c-2
 g8 h d h g8 h d h
 g8 h d h g c es c
-g8 h d h
+g8 h( d h \stemDown g-1 f es d-4)
+\stemUp
+c8 g' es g c,8 g' es g
+as, es' c es as, es' c es
+g, es' c es g, f' h, f'
+c8 g' es g r8
   \set fingeringOrientations = #'(left)
  }
 
@@ -45,8 +53,8 @@ LHII = \relative c'
   g8( h d g f es f d)
   c2 c2
   c cis-5 d-5 d g-4 g8 r r4
-  g2 g2 g2 g2 g2 g2 g2
-  c,2 s2 as as g g c s4
+  g2-5 g2-5 g2 g2 g2 g2 g2 s2
+  c,2 c as as g g c s4
   \set fingeringOrientations = #'(left)
  }
 
