@@ -1,0 +1,57 @@
+\version "2.19.37"
+\language "deutsch"
+
+\include "Footer.ly"
+
+
+global = {
+  \key f \major
+  \time 6/8
+  \partial 8
+  \tempo "Allegretto animato"
+}
+
+right = \relative c'' {
+  \global
+  c8-.-1
+  \grace { f32( g } f8)-.-3 r c-. \grace { g32( f } g8)-.-3 r c-. %Takt 1
+  \grace { a'32( b } a8)-.-3 r f-. \acciaccatura d8-3 f8(-2 e f)
+  \grace { g32( a } g8)-.-3 r c-. \grace { a32( b } a8)-.-3 r c-.
+}
+
+leftOne = \relative c {
+  \global
+  % Die Noten folgen hier.
+  r8
+  f a c e, b' c
+  f, a c f, a c
+  c, e g c, f a
+}
+
+leftTwo = \relative c {
+  \global
+  % Die Noten folgen hier.
+  s8
+  f4. e f f c c
+}
+
+\score {
+  \new PianoStaff \with {
+    instrumentName = "No. 2. F dur"
+    shortInstrumentName = "Kl."
+  } <<
+    \new Staff = "right" \right
+    \new Staff = "left"
+    {
+      \clef bass
+
+      <<
+        \mergeDifferentlyHeadedOn
+        \mergeDifferentlyDottedOn
+        \leftOne \\
+        \leftTwo
+      >>
+    }
+  >>
+  \layout { }
+}
