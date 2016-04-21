@@ -1,9 +1,6 @@
 \version "2.19.37"
 \language "deutsch"
 
-\include "Footer.ly"
-
-
 global = {
   \key f \major
   \time 6/8
@@ -14,10 +11,13 @@ global = {
 right = \relative c'' {
   \global
   c8-.-1
-  \grace { f32( g } f8)-.-3 r c-. \grace { g32( f } g8)-.-3 r c-. %Takt 1
+  \grace { f32( g } f8)-.-3 r c-. \grace { g'32( f } g8)-.-3 r c,-. %Takt 1
   \grace { a'32( b } a8)-.-3 r f-. \acciaccatura d8-3 f8(-2 e f)
-  \grace { g32( a } g8)-.-3 r c-. \grace { a32( b } a8)-.-3 r c-.
+  \grace { g32( a } g8)-.-3 r c,-. \grace { a'32( b } a8)-.-3 r c,-.
+ \grace { b'32( c } b8)-. r g-. \slashedGrace a8 g-3( fis-2 g-1)
+ \grace { c32 d } c8(-.-3 a-.) f-.
 }
+
 
 leftOne = \relative c {
   \global
