@@ -6,7 +6,7 @@ RH =
   \partial 4 \accidentalStyle modern
  \key c \minor
 \bar ".|:"
-\once \override Voice.Slur #'positions = #'(3 . 0.5)
+\once \override Voice.Slur #'positions = #'(2.8 . 0.6)
 g4-1(
 es'-3) es( d c) g'2-5( d)
 es4-3 es( d c < h-2 d-4 >2 g)
