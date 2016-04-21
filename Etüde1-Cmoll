@@ -1,4 +1,4 @@
-\version "2.19.38"
+\version "2.19.37"
 \language "deutsch"
 
 RH =
@@ -6,6 +6,7 @@ RH =
   \partial 4 \accidentalStyle modern
  \key c \minor
 \bar ".|:"
+\once \override Voice.Slur #'positions = #'(3 . 0.5)
 g4-1(
 es'-3) es( d c) g'2-5( d)
 es4-3 es( d c < h-2 d-4 >2 g)
