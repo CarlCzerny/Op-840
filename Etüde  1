@@ -5,7 +5,10 @@ RH =
   \partial 4 \accidentalStyle modern
   \override Flag.stroke-style = ##f
   \slashedGrace a'8 g8.(-3 fis16
-  g8)-.-1 r \slashedGrace g8 e'-. r g,-.-1 r \slashedGrace g8 d'8-. r
+  g8)-.-1 r 
+  \once \override Voice.Slur #'positions = #'(1 . 0.7)
+   \once \override Voice.Slur.eccentricity = #0.0
+  \slashedGrace g8( e'-.) r g,-.-1 r \slashedGrace g8 d'8-. r
   g,8-. r \slashedGrace g8 e'-. r \slashedGrace a,8 g8.-3( fis16 g8. fis16-2
   g8-.-1) r \slashedGrace g8( d'-.) r g,8.-1( a16 g8. a16
   g8-.) r \slashedGrace g8( e'-.) r e,8.-2( c16-1 f8.-3 d16-1
