@@ -1,5 +1,6 @@
 \version "2.19.38"
 \language "deutsch"
+%% Noten fertig, es fehlt Dynamic
 RH =
 \relative c'' {
   \partial 4 \accidentalStyle modern
