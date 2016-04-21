@@ -12,6 +12,7 @@ es'-3) es( d c) g'2-5( d)
 es4-3 es( d c < h-2 d-4 >2 g)
 es'4-3 es( d c fis2-3 g-1 b4-2 g-1 fis-2 a-4) g2 r4
 \bar ":.|.:"
+\once \override Voice.Slur #'positions = #'(0.5 . 3)
 g4-5( f4.-4 d8-2 es4-2 c-1) 
 g'( g,) g8 r g'4( f4. d8 es4 c)
 < h d g >2. g4( es') es( d c)
