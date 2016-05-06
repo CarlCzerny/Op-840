@@ -3,14 +3,14 @@
 
 FootLeft = #(string-append "" )
 FootCenter = #(string-append "")
-FootRight = #(string-append "gesetzt mit LILYPOND " (lilypond-version) " am " (strftime "%d.%m.%Y %H:%M:%S" (localtime (current-time))))
+FootLeft = #(string-append "gesetzt mit LILYPOND " (lilypond-version) " am " (strftime "%d.%m.%Y %H:%M:%S" (localtime (current-time))))
 
 \paper {
   #(set-paper-size "a4")
   oddFooterMarkup = \markup \fill-line {
     \abs-fontsize #9 { \FootLeft }
     % \abs-fontsize #7.0 { \italic { \FootCenter } }
-    \abs-fontsize #9 { \FootRight }
+    \abs-fontsize #9 { \FootLeft }
   }
 
   fonts = #(make-pango-font-tree
