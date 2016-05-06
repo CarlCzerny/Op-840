@@ -1,0 +1,137 @@
+\version "2.19.37"
+
+\language "deutsch"
+%% Noten fertig, es fehlt Dynamic!
+
+\include "Papier+Layout.ly"
+
+RH= \relative c'' {
+  %\accidentalStyle modern
+  \time 6/8
+  \key f \major \partial 8
+
+  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
+  c8-.-1
+  \grace { f32( g } f8)-.-3 r c-. \grace { g'32( f } g8)-.-3 r c,-. %Takt 1
+  \grace { a'32( b } a8)-.-3 r f-. \acciaccatura g8-3 f8(-2 e f)
+  \grace { g32( a } g8)-.-3 r c,-. \grace { a'32( b } a8)-.-3 r c,-. |
+  \grace { b'32( c } b8)-. r g-. \grace a8 g(-3 fis8-2 g) | \break
+  \grace { c32 d } c8(-3 a)-. f-.
+  \set fingeringOrientations = #'(left)
+  < d'-4 f-5 >4(-> < b-2 d-4 >8) |
+  \grace { c32_\markup { \italic \small "cresc." }
+           d } c8( a)-. f-. < d' f >4(-> < b d >8) |
+  < a c >8-._\p gis'32(-4 f) r16 e32(-2 f) r16 cis32(-2 d) r16 e32(-4 d)-3 r16 c32(-3 b) r16
+  < f-2 a-4 >4.( < g b >8) r \bar ":..:" \break
+  c-.-5_\f c8.->( b16 g e) c8-1-. d-. e-3-.
+  f-.-1 a-. d-. c4-> c8
+  c8.->( b16 g e) c8-1-. d-. e-3-.
+  f-. a-. d-. c4-> c8-2 \break
+  \grace { d32 e } d8(-3 b)-. f-.  < d' f>4(-> < b d >8)
+  \grace { c32 d } c8(-2 a-1-.)-. a'-.-5 \grace { b,32 c } b8(-2 g-.)-. g'-.
+  \grace { a,32 b } a8(-2 f-.)-. f'-. \grace { g,32 a } g8(-2 e-.)-. e'-.-4
+  f-5-. c-. a-. f-. r^\markup { "Fine." }
+  \tempo \markup { \bold "B Dur." \italic "(Si majeur)" }
+  \bar ":..:"
+}
+
+LHI = \relative c {
+  \clef bass  \key f \major \partial 8
+  \voiceOne
+  \mergeDifferentlyHeadedOn
+  \mergeDifferentlyDottedOn
+  \set fingeringOrientations = #'(down)
+  \override Fingering.direction = #DOWN
+  \override Fingering.staff-padding = #'()
+  d8\rest
+  f a c e, b' c
+  f, a c f, a c
+  c, e g c, f a
+  c, e b' e, b' c
+  f, a c f, b d
+  f, a c f, b d
+  f, a c \clef treble b d g c, c'( h c) b8\rest
+  b8\rest \clef bass
+  c,, < g' b > q c, q q
+  c < f a > q c q q
+  c < g' b > q c, q q
+  f < a c > q f q q
+  b, d f b, d f
+  a, c f b, d g
+  c, f a c, g' b
+  s4. s8 s8 d,8\rest
+}
+
+LHII = \relative c {
+  \partial 8
+  \voiceTwo
+  \set fingeringOrientations = #'(down)
+  \override Fingering.direction = #LEFT
+  \override Fingering.staff-padding = #'()
+  s8
+  f4. e f f c c c e f f f f f b
+  c4 s4. s8 c,4. c c c c c f f b, b a b c c
+  < f a >8 q q q d8\rest
+}
+
+ST= {
+  s8 s2.*4 \break s2.*4 %\break s2.*5 \break
+  %s2.*5 \break
+
+}
+
+DY={
+  s8 s2. * 5
+}
+
+\header {
+  title = \markup \caps "50 Melodische übungsstücke"
+  composer =\markup { \bold \large "Carl Czerny" "Op:" \number 840 }
+}
+\score
+{
+  \new PianoStaff \with {
+    instrumentName = \markup {
+      \center-column {
+        \line { \bold \huge { N. \bold \super o } \number 2. }
+        \line \large { F Dur }
+        \italic \line { Fa majeur. }
+      }
+    }
+    shortInstrumentName = ""
+  }
+  <<
+
+    \new Staff="Discant"
+    \with
+    {
+      \consists "Bar_number_engraver"
+      \override BarNumber.padding = #0
+      \override BarNumber.self-alignment-X = #CENTER
+      \override BarNumber.break-visibility = #end-of-line-invisible
+      %instrumentName="Vocal"
+    }
+    {
+      <<
+        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
+        \RH
+        \new Dynamics \DY
+        %\ST
+      >>
+
+    }
+    \new Staff="Bass" {
+
+      <<
+        \new Voice = "first"
+        \relative c'
+        \LHI
+        \new Voice= "second"
+        \LHII
+      >>
+    }
+  >>
+  %\layout {  }
+  %\midi { }
+}
+
