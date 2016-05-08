@@ -1,0 +1,153 @@
+\version "2.19.37"
+
+\language "deutsch"
+
+\include "Papier+Layout.ly"
+
+\header {
+  mutopiatitle = "50 Melodische Übungsstücke"
+  mutopiacomposer = "CzernyC"
+  mutopiaopus = "840"
+  mutopiainstrument = "Piano"
+  source ="Mainz: Schott, n.d.[1855]. Plate 13253"
+  style = "Romantic"
+  license="Public Domain"
+  maintainer="Manuela"
+  maintainerEmail="pressephotografin--gmail.com"
+  composer =\markup { \bold "Carl Czerny (1791-1857)"  }
+  %opus = \markup { "Op:" \number \tiny 840 }
+  piece =\markup {"Op:" \number \tiny 840 "Etüde" \number \tiny 5 }
+  title = "50 Melodische Übungsstücke"
+  %subtitle = "subtitle"
+  %arranger = "arranger"
+  %instrument = "Piano"
+  metre = "metre"
+  %poet = "poet"
+  texidoc = "All header fields with special meanings."
+  copyright = "public domain"
+  enteredby = "Manuela"
+}
+
+RH= \relative c'' {
+  %\accidentalStyle modern
+  \time 2/4
+  \key c \major
+  %\set Staff.explicitKeySignatureVisibility = #all-invisible
+  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/8)
+  \set Staff.beatStructure = #'(1 1 1 1 ) % abhängig vom Takt
+  \tempo  "Allegretto animato"
+
+  %% so kriege ich das "o" zu N.o
+  r8_\markup { \dynamic p \italic "leggierm." }
+  \once \override TextScript.extra-offset = #'( -19.5 . 5.5 )
+
+  c32-.-1-\markup { \small \bold o } ( d e f g8-5-. ) g32-1 ( a h c
+  d8-5-. ) d32-5 ( c h a g8-1-. ) g'32-5 ( f e d
+  e8-3-. ) e32-5 ( d c h a8-. ) d32-5 ( c h a
+  g8 ) f'!32-4 g f e d_\markup { \italic "cresc." } c-1 h-4 a g f-1 e-3 d \break
+  c8-.\f c32 ( d e f g8-. ) g32 ( a h c
+  d8-. ) d32 ( c h a g8-. ) h32-5 ( a g f
+  e8-. ) a32-5 ( g f e d8-. ) g32-5 ( f e d
+  c d e-3 f-1 g a h c ) c,8-. r8
+  \bar ":..:"
+  \set Staff.beatStructure = #'(4 )
+  < h-3 d-5 >8 q q q \break
+  < c-4 d-5 > q q q < fis,-1 a-2 d-5 > q q q < g h d > q q q r8
+  \set Staff.beatStructure = #'(1 1 1 1 )
+  d''32-5 ( c h a g8-. ) h32-5 ( a g fis
+  e8-. ) e'32-5 ( d c h a8-.) c32-4 ( h a g fis-3 g a g fis e d e fis-3 g-1 a h c-1 d e fis ) \break
+
+  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
+  \mark \markup { \bold "C Dur." \italic "(Ut mineur)" }
+  \bar ":..:"
+  \key es \major
+  \bar ":..:"
+}
+
+LHI = \relative c' {
+  \clef bass  \key c \major
+  \voiceOne
+  \mergeDifferentlyHeadedOn
+  \mergeDifferentlyDottedOn
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/8)
+  \set Staff.beatStructure = #'(4 ) % abhängig vom Takt
+  \set fingeringOrientations = #'(up)
+  \override Fingering.direction = #DOWN
+  \override Fingering.staff-padding = #'()
+  \clef treble
+  c8 < e g > q q h < f' g > q q
+  c < e g > d < fis c' > h s8 s4
+  c,,8 < e g > q q h < f' g > q q
+  \set Staff.beatStructure = #'(2 2 )
+  c < e g > g, < h d > e s8 s4
+  \set Staff.beatStructure = #'(1 1 1 1 )
+  d8\rest g,32-5 ( a h c d8-1 ) \stemDown d32 ( e fis g
+  a8-1-. ) a32-1 ( g fis e d4-5^> )
+  d8\rest d32-5 ( e fis g a8-1-. ) a32-4 ( h c d
+  h8-.-3 ) d32-1 ( c h a g4-5_> )
+}
+
+LHII = \relative c' {
+
+  \voiceTwo
+  \set fingeringOrientations = #'(down)
+  \override Fingering.direction = #LEFT
+  \override Fingering.staff-padding = #'()
+  c2 h c4 d g8
+  h8\rest h4\rest \clef bass
+  c,,2 h c4 g4 c8
+  %b16^( d f b f d \stemUp b8^.) \stemNeutral d8\rest d8\rest
+  %d,8\rest_\markup "D.C. sino al fine."
+}
+
+\score
+{
+  \new PianoStaff \with {
+    instrumentName = \markup {
+      \center-column {
+        %\once \override TextScript.extra-offset = #'( 0 . 0.5)
+        %\draw-circle #0.5 #0.3 ##f
+        \line { \bold \huge { N. } \number 5. }
+        \line \large { C Dur }
+        \italic \line { Ut majeur. }
+      }
+    }
+    shortInstrumentName = ""
+  }
+  <<
+
+    \new Staff="Discant"
+    \with
+    {
+      \consists "Bar_number_engraver"
+      \override BarNumber.padding = #0
+      \override BarNumber.self-alignment-X = #CENTER
+      \override BarNumber.break-visibility = #end-of-line-invisible
+      \override Slur.outside-staff-priority = #150
+    }
+    {
+      <<
+        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
+        \RH
+
+      >>
+
+    }
+    \new Staff="Bass" {
+
+      <<
+        \new Voice = "first"
+        \relative c'
+        \LHI
+        \new Voice= "second"
+        \LHII
+      >>
+    }
+  >>
+  %\layout {  }
+  %\midi { }
+}
+
