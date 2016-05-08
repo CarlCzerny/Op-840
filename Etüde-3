@@ -19,7 +19,8 @@
   composer =\markup { \bold "Carl Czerny (1791-1857)"  }
   opus = \markup { "Op:" \number \tiny 840 }
   piece =\markup { "Etüde" \number \tiny 3 }
-  title = "50 Melodische Übungsstücke"}
+  title = "50 Melodische Übungsstücke"
+}
 
 RH= \relative c'' {
   %\accidentalStyle modern
