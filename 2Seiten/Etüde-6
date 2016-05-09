@@ -1,0 +1,157 @@
+\version "2.19.37"
+
+\language "deutsch"
+
+\include "Papier+Layout.ly"
+%% wenn erforderlich linken Abstand ändern
+\paper {
+  %% hier für den Fall, dass Änderungen erforderlich sind
+  %left-margin = #5
+  %top-margin = #20
+  %system-system-spacing.basic-distance = #8
+  %min-systems-per-page = #6
+  page-count = #1
+
+}
+\header {
+  mutopiatitle = "50 Melodische Übungsstücke"
+  mutopiacomposer = "CzernyC"
+  mutopiaopus = "840"
+  mutopiainstrument = "Piano"
+  source ="Mainz: Schott, n.d.[1855]. Plate 13253"
+  style = "Romantic"
+  license="Public Domain"
+  maintainer="Manuela"
+  maintainerEmail="pressephotografin--gmail.com"
+  composer =\markup { \bold "Carl Czerny (1791-1857)"  }
+  %opus = \markup { "Op:" \number \tiny 840 }
+  piece =\markup {"Op:" \number \tiny 840 "Etüde" \number \tiny 6 }
+  title = "50 Melodische Übungsstücke"
+  %subtitle = "subtitle"
+  %arranger = "arranger"
+  %instrument = "Piano"
+  metre = "metre"
+  %poet = "poet"
+  texidoc = "All header fields with special meanings."
+  copyright = "public domain"
+  enteredby = "Manuela"
+}
+
+RH= \relative c'' {
+  %\accidentalStyle modern
+  \time 6/8
+  \key c \major \partial 8
+  %\set Staff.explicitKeySignatureVisibility = #all-invisible
+  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/8)
+  \set Staff.beatStructure = #'(3 3 ) % abhängig vom Takt
+
+  \mark \markup "Allegretto moderato"
+  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
+  \slashedGrace f8-\markup { \dynamic p \italic dol. } e16-3 ( dis-2
+  e8-1 a-3 c-5_>~ c a e )
+  e( h' d_>~ d h e, )
+  e8-1 ( a-3 c~-5_> c a e ) \break
+  gis-2 ( h4~ ) h8 e, e e-1 ( a16-2 h c8~-4 c h-2 a-1 )
+  \slashedGrace c8 b16-2 ( a b d-4 f8~ f e d )
+  c4-2 ( e8-5 h!4 e8 a,4 r r)
+  % \acciaccatura g8-3 f8 \ottava #0
+  \bar ":..:" \break
+
+  % g-\markup { \dynamic p \italic dol. }
+  % b(-2 c b a b d-4
+  %\autoBeamOff f8-5-.) \autoBeamOn b16-3(_\markup { \italic \small "cresc." } c d c)
+  \mark \markup { \bold "A Dur." \italic "(La majeur)" }
+  \bar ":..:"
+  \key a \major
+  \bar ":..:"
+}
+
+LHI = \relative c' {
+  \clef bass \key c \major \partial 8
+  \voiceOne
+  \mergeDifferentlyHeadedOn
+  \mergeDifferentlyDottedOn
+  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
+  \set fingeringOrientations = #'(left) %% für Akkorde!
+  \override Fingering.direction = #UP  %% für Einzelnoten!
+  \override Fingering.staff-padding = #'()
+  \slashedGrace s8 d,8\rest
+  a'8 < c e > q a q q
+  gis < h e > q gis q q
+  a < c e > q f, < a dis > q
+  s2.
+  a8 < c e >8 q a q q
+}
+
+LHII = \relative c' {
+  \partial 8
+  \voiceTwo
+  \set fingeringOrientations = #'(left)   %% Akkorde
+  \override Fingering.direction = #DOWN %% Einzelnoten
+  \override Fingering.staff-padding = #'()
+  s8
+  a4. a gis gis a f
+  e8^( gis h e-1 d!-2 h-4 )
+  a4. a d, d e e < a-2 c-4 >8^( e' c a ) d,8\rest
+  s4 s4
+  d,8\rest_\markup "D.C. sino al fine."
+}
+
+\score
+{
+  \new PianoStaff \with {
+    instrumentName = \markup {
+      \center-column {
+        \line {
+          \bold \huge { "№" }
+          \number 6.
+        }
+        \line \large { A moll. }
+        \italic \line { La mineur. }
+      }
+    }
+    shortInstrumentName = ""
+  }
+  <<
+
+    \new Staff="Discant"
+    \with
+    {
+      \consists "Bar_number_engraver"
+      \override BarNumber.padding = #0
+      \override BarNumber.self-alignment-X = #CENTER
+      \override BarNumber.break-visibility = #end-of-line-invisible
+      \override Slur.outside-staff-priority = #150
+    }
+    {
+      <<
+        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
+        \RH
+
+      >>
+
+    }
+    \new Staff="Bass" {
+
+      <<
+        \new Voice = "first"
+        \relative c'
+        \LHI
+        \new Voice= "second"
+        \LHII
+      >>
+    }
+  >>
+  %% Falls erforderlich Zeilenlänge und Einzug ändern
+  \layout {
+    %indent = #15
+    %ragged-last-bottom = ##f
+    %ragged-last = ##f
+    %ragged-bottom = ##f
+    %line-width = #200
+  }
+  %\midi { }
+}
+
