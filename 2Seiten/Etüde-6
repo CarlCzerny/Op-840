@@ -9,10 +9,10 @@
   %left-margin = #5
   %top-margin = #20
   %system-system-spacing.basic-distance = #8
-  %min-systems-per-page = #6
+  %min-systems-per-page = #5
   %page-count = #1
-
 }
+
 \header {
   mutopiatitle = "50 Melodische Übungsstücke"
   mutopiacomposer = "CzernyC"
@@ -26,7 +26,7 @@
   composer =\markup { \bold "Carl Czerny (1791-1857)"  }
   %opus = \markup { "Op:" \number \tiny 840 }
   piece =\markup {"Op:" \number \tiny 840 "Etüde" \number \tiny 6 }
-  title = "50 Melodische Übungsstücke"
+  %title = "50 Melodische Übungsstücke"
   %subtitle = "subtitle"
   %arranger = "arranger"
   %instrument = "Piano"
@@ -52,8 +52,9 @@ RH= \relative c'' {
   \set fingeringOrientations = #'(up) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \mark \markup "Allegretto moderato"
-  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
   \override Slur.direction = #UP
+  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
+
   \slashedGrace f8-\markup { \dynamic p \italic dol. } e16-3 ( dis-2
   e8-1 a-3 c-5_>~ c a e )
   e( h' d_>~ d h e, )
@@ -90,6 +91,20 @@ RH= \relative c'' {
   e16-2 ( h e gis h gis e8 ) r
   \bar ":..:"
   e-5\f < h d! gis~ >4. gis'8 ( fis e )
+  < cis-2 e-3 >4. a'8 ( cis, e )
+  \override Fingering.avoid-slur = #'outside
+  %\offsetPositions #'(-10 . 0)
+  \override Slur.outside-staff-priority = #500
+  \override Fingering.outside-staff-priority = #1000
+  < cis-2 e-4 >  ( < h d > ) q < h-2 d-4 > ( < a cis > ) q
+  < gis h >4. r8 e'-5 e
+  \override Fingering.avoid-slur = #'inside
+  \override Fingering.outside-staff-priority = #100
+  cis16-3 ( h a h cis d-1 e_\markup { \italic "cresc." } fis gis-4 a-1 cis-3 a-1
+  gis-3 fis eis fis gis ais-4 h-1 cis-2 e!-4 d cis h )
+  e-5\sf ( cis a e cis' a d-5_\markup { \italic "dim." } h-3 gis-1 e-1 d-4 h-2
+  a-1 cis e a e cis a8 ) r
+  \bar ":..:"
 }
 
 LHI = \relative c' {
@@ -151,8 +166,18 @@ LHII = \relative c' {
   < e,~ gis^~ > 4. < e gis >8 h'8\rest h8\rest
   \clef bass
   \stemUp
-  \offsetPositions #'(0 . -3.4)
+  \offsetPositions #'(1 . -4)
   e,,,16_( gis h e gis h \stemDown e8 ) d,8\rest d8\rest
+  \stemUp
+  \offsetPositions #'(0 . -1)
+  e,16-5_( a-3 cis-2 e-1 a-3 cis-2 \stemDown e8 ) d,8\rest d8\rest
+  < gis e' >4 d8\rest < a' e' >4  d,8\rest
+  \override Fingering.direction = #UP
+  e16^( e' d cis-3 h-1 a gis fis-4 e-1 d cis h-4 )
+  \stemUp a4 \stemDown d8\rest < cis e a >4 d8\rest
+  < d fis h >4 d8\rest < d fis h >4 d8\rest
+  < e a cis >4 d8\rest < e gis d' >4 d8\rest
+  < a'~ cis^~ >4. < a cis >8
   d,8\rest_\markup "D.C. sino al fine."
 }
 
