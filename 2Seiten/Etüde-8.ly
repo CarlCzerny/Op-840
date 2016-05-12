@@ -1,17 +1,8 @@
 \version "2.19.37"
 
 \language "deutsch"
-
 \include "Papier+Layout.ly"
-%% wenn erforderlich linken Abstand ändern
-\paper {
-  %% hier für den Fall, dass Änderungen erforderlich sind
-  %left-margin = #15
-  %top-margin = #20
-  %system-system-spacing.basic-distance = #8
-  %min-systems-per-page = #6
 
-}
 \header {
     composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
     mutopiacomposer     =       "CzernyC"
@@ -183,12 +174,6 @@ LH = \relative c {
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
-    %indent = #15
-    %ragged-last-bottom = ##f
-    %ragged-last = ##f
-    %ragged-bottom = ##f
-    %line-width = #180
   }
-  %\midi { }
 }
 
