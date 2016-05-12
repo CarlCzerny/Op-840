@@ -6,34 +6,32 @@
 %% wenn erforderlich linken Abstand ändern
 \paper {
   %% hier für den Fall, dass Änderungen erforderlich sind
-  left-margin = #15
-  top-margin = #20
-  system-system-spacing.basic-distance = #8
+  %left-margin = #15
+  %top-margin = #20
+  %system-system-spacing.basic-distance = #8
   %min-systems-per-page = #6
 
 }
 \header {
-  mutopiatitle = "50 Melodische Übungsstücke"
-  mutopiacomposer = "CzernyC"
-  mutopiaopus = "840"
-  mutopiainstrument = "Piano"
-  source ="Mainz: Schott, n.d.[1855]. Plate 13253"
-  style = "Romantic"
-  license="Public Domain"
-  maintainer="Manuela"
-  maintainerEmail="pressephotografin--gmail.com"
-  composer =\markup { \bold "Carl Czerny (1791-1857)"  }
-  %opus = \markup { "Op:" \number \tiny 840 }
-  piece =\markup {"Op:" \number \tiny 840 "Etüde" \number \tiny 8 }
-  title = "50 Melodische Übungsstücke"
-  %subtitle = "subtitle"
-  %arranger = "arranger"
-  %instrument = "Piano"
-  metre = "metre"
-  %poet = "poet"
-  texidoc = "All header fields with special meanings."
-  copyright = "public domain"
-  enteredby = "Manuela"
+    composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
+    mutopiacomposer     =       "CzernyC"
+
+    title               =       "" %"50 Melodische Übungsstücke"
+    mutopiatitle        =       "50 Melodische Übungsstücke, No. 1"
+
+    opus                =       "Op. 840"
+    piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 8 }
+    mutopiaopus         =       "840, No. 8"
+
+    source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
+    style               =       "Technique"
+    license             =       "Public Domain"
+    copyright           =       "public domain"
+    enteredby           =       "Manuela"
+    maintainer          =       "Manuela"
+    maintainerEmail     =       "pressephotografin--gmail.com"
+    maintainerWeb       =       "https://github.com/CarlCzerny/Op-840"
+    mutopiainstrument   =       "Piano"
 }
 
 RH= \relative c' {
@@ -59,30 +57,37 @@ RH= \relative c' {
   < d f >-. < e g>-. < f a >-. < g h >-. < a c >-. < h d >-. < c-2 e-4 >-. < d-3 f-5 >-.
   < c-2 e-4>8-. < g c e-5 >-. < f h d >-. q-. < e c' >4 r \bar ":..:"
   r16 \f < e'-1 g-3>-. < d-1 f-3 >-. < c-1 e-3 >-. < h-1 d-3 >-. < a c >-. < g h >-. < f a >-.
-  < e g>-. < d f >-. < c e >-. < h d >-. < a c >-. < g h >-. < f a >-. < e-1 g-3>-.
+  < e g>-. < d f >-. < c e >-. < h d >-. < a c >-. < g h >-. < f a >-.
+  \set fingeringOrientations = #'(down)     %% für Akkorde!
+  < e-1 g-3>-.
+  \set fingeringOrientations = #'(left)     %% für Akkorde!
   < e-2 a-5 >8 q-. < e g >-. q-. < d f >4 r
-
-  %\retrograde {  }
-  %\inversion c c' {  }
-
-  \once \override Slur.positions = #'(2.8 . 0.6)
-  g4 ( e' )
-
+  \set fingeringOrientations = #'(down)     %% für Akkorde!
+  r16 \sf < d-1 h'-5 >-. < e-1 c'-5 >-. < f-1 d'-5 >-.
+  \set fingeringOrientations = #'(up)     %% für Akkorde!
+  < g-1 e'-5 >-. < a f' >-. < h g' >-. < c a' >-.
   \ottava #1
-  \bar ":..:" \break
-
-  c'''-\markup { \dynamic p \italic dol. } c c c
-  \ottava #0
-  \autoBeamOff f,,8_\markup { \italic \small "cresc." }  f8 f8 f8 \autoBeamOn
-
-
-  \mark \markup { \bold "B Dur." \italic "(Si" \super \flat \italic " majeur)" }
-  \bar ":..:" \break
+  < d h' > < e c' > < f d' > < g e' > < a f' > < h g' > < c a' > < d h' >
+  < e c' >8-. \ff < c-1 g'-4 >-. < g c e-5 >-. < f g h d >-. < e g c >_.
+  \ottava #0 r r4^\markup { "Fine." } \bar ":..:"
+  %\retrograde { < d-2 f-4 >16-. < e-2 g-4>-. < f-2 a-4 >-. < g'-2 h'-4 >-. < a c >-. < h d >-. < c e >-. }
+  %\inversion c d { < d-2 f-4 >16-. < e-2 g-4>-. < f-2 a-4 >-. < g-2 h-4 >-. < a c >-. < h d >-. < c e >-. }
   \key es \major
-  b b b
-  \bar ":..:"
+
+  \mark \markup { \bold "C moll." \italic "(Ut mineur)" }
+  es-3-\markup { \dynamic p \italic dol. } ( c
+  g'4.-> f8 es8-. ) [ es-. c-1-. c-2-. ]  < h-1 d-3 >2
+  as'8-5-. [ as-3-. as-. as-. ]
+  g4.-4 ( f16 es )
+  d8-1-. d-3 ( f h, ) c4 r \bar ":..:"
+  \set Staff.beatStructure = #'(4 )
+  d8-2 ( g es-3 c-1 d4-3 g, )
+  d'8 ( g es c d2 )
+  h'8-4-. \f h-. h-. h-. c4.-5-\sf-\> ( g16-3 es-2\!
+  d8-1 \p as'-5 g-4 h, c4 ) r
+
 }
-LH = \relative c' {
+LH = \relative c {
   \clef bass
   \key c \major
   \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
@@ -94,49 +99,50 @@ LH = \relative c' {
   %\override Slur.direction = #UP
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
-  \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-
-}
-
-LHI = \relative c' {
-  \clef bass
-  \key c \major
-  \voiceOne
-  \mergeDifferentlyHeadedOn
-  \mergeDifferentlyDottedOn
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
-  \set fingeringOrientations = #'(left) %% für Akkorde!
-  \override Fingering.direction = #UP  %% für Einzelnoten!
-  \override Fingering.padding = #0.2
-  \override Fingering.staff-padding = #'()
-  \override Fingering.avoid-slur = #'inside
-  \override Slur.direction = #UP
-  \set Timing.beamExceptions = #'()
-  \set Timing.baseMoment = #(ly:make-moment 1/8)
-  \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-
-  %\slashedGrace s8 r4 %% für den Fall, dass das Stück mit einem Vorschlag beginnt!
-  %% Lilypond Bug, Workaround
-  d,4\rest c4
-  \key b \major
-  b8
-}
-
-LHII = \relative c' {
-  \voiceTwo
-  \set fingeringOrientations = #'(left)   %% Akkorde
-  \override Fingering.direction = #DOWN %% Einzelnoten
-  \override Fingering.padding = #0.8
-  \override Fingering.staff-padding = #'()
-  \override Fingering.avoid-slur = #'inside
-  \override Slur.direction = #DOWN
-  s4 c,4 c
-  \key es \major
-  b2
-  \stemUp b4_. \stemDown b b
-  d4\rest
-  d4\rest_\markup "D.C. sino al fine."
-
+  \set Staff.beatStructure = #'(2 2 )  %% abhängig vom Takt
+  < c g' >4 r r2 < h g' >8-. q-. < c g' > q
+  g16 g' d h g8 r < h g' >4 r r2
+  \stemDown
+  c8-.[ g'-. g,-. g'-. ]
+  \stemNeutral
+  c,16 c' g e c8 r
+  < c g' >4 r r2 < cis a' >8-. q-. q-. q-.
+  d16-4 f a f d8 r < g, h f' >4 r r2
+  \stemDown
+  c8-. [ e-. g-. g,-. ]
+  \stemNeutral
+  c,16 c' g e c8 r
+  <<
+    {
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \voiceOne
+      \key es \major
+      c'16 g' es g c, g' es g
+      h, g' d g h, g' d g
+      c, g' es g es c' g c
+      g4 g f f es es f g s2
+      g4 g g g g g g g f f es es f g
+    } \\ {
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Fingering.direction = #UP  %% für Einzelnoten!
+      c,4 c h h c es
+      g16 d' h d g, d' h d
+      f, d' h d f,^\< d' h d
+      es,^\> c' g c\! es, c' g c
+      f, d' as d g, f' d f
+      c-4^( es g es c8 ) d,8\rest
+      g16 d' h d g, es' c es
+      g, d' h d g, d' h d
+      g, d' h d g, es' c es
+      g, d' h d g, d' h d
+      f, d' as d f, d' as d
+      es, c' g c es, c' g c
+      f, d' as d g, f' d f
+      c^(_\markup "D.C. sino al fine." es g es c8 ) d,8\rest
+    }
+  >>
 }
 
 \score
@@ -155,7 +161,6 @@ LHII = \relative c' {
     shortInstrumentName = ""
   }
   <<
-
     \new Staff="Discant"
     \with
     {
@@ -169,19 +174,11 @@ LHII = \relative c' {
       <<
         \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
         \RH
-
       >>
 
     }
     \new Staff="Bass" {
-
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
+      \LH
     }
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
