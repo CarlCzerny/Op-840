@@ -1,10 +1,9 @@
 \version "2.19.37"
 
 \language "deutsch"
-%% Noten fertig, es fehlt Dynamic!
 
 \include "Papier+Layout.ly"
-%\include "letter.ly"
+
 %#(set-global-staff-size 18)
 \header {
   mutopiatitle = "50 Melodische Übungsstücke"
