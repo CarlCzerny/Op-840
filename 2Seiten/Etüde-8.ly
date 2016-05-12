@@ -176,4 +176,3 @@ LH = \relative c {
   \layout {
   }
 }
-
