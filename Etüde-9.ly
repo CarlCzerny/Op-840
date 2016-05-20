@@ -99,7 +99,7 @@ RH= \relative c' {
   \acciaccatura a, es'-4-. c-1-.
   b-2 r r4^\markup "Fine."
   %\offsetPositions #'(1 . 0)
-  \bar ":..:"
+  \bar ":..:"  \pageBreak
   \key es \major
   g,16-1_\markup { \dynamic p \italic "dol." } ( b-3 es-4 b-2 g'4-5
   f,16 b es b g'4 )
@@ -109,6 +109,22 @@ RH= \relative c' {
   f,16 b es b g'4 )
   a,16 ( c es-3 f-1 a c es-4 a,
   b8-. ) b-. b-.\noBeam r
+  \bar ":..:"
+  b16-4 \p ( as! f d b-4 as f d b_2 d_1 f as b-4 d-1 f-3 d-1 )
+
+  es-2 ( f es d es8-. ) g-4-.
+  f4-1 ( b8-4-. ) r
+  b16 \f ( as f d b as f d-1
+  f as b-4 d-1 f as b-4 d-1
+  f-4 es d es g-5 es b f
+  f2-2 )
+  g,16 \p ( b es b g'4 g,16 b es b g'4 )
+  f,16 ( b d-4 f-1 b d f b,-4
+  es4-5 b8-2-. ) r
+  c,16_\markup \italic "cresc." ( es as es c'4
+  b,16-1 es-2 g-4 es-2 b'4-5 )
+  d,,16 \f ( f as b-4 d-1 f as d,
+  es8-. ) es-. es-. r
   \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
 
   \bar ":..:"
@@ -215,7 +231,7 @@ LH = \relative c' {
   es-. < g b >-. es-. < g c >-.
   f-. < b d >-. f-. < a c es >-.
   < b-4 d-2 > < d-2 f-1 > < b d >\noBeam r
-
+\key es \major
   <<
     {
       \voiceOne
@@ -231,7 +247,10 @@ LH = \relative c' {
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
       es,2 es b es es es f
+      s
 
+      b, b s b b b b s es es b es as^4 g^5
+      b,
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -245,12 +264,28 @@ LH = \relative c' {
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
       es8-4 b'-1 g-2 b-1
       es,8 b' g b
-      b, a' f a
+      b, as' f as
       es b' g b
       es, b' g b
       es, b' g b
       f es' c es
       < b d >4. d,8\rest
+      b8 as'! f as
+      b, as' f as
+      g-2^( b-1 g-2 es-3 )
+      b f' d f
+      b, f' d f
+      b, f' d f
+      b, g' es g
+      < b,^5 d^3 > b'-1 as-2 f-3
+      es b' g b
+      es, b' g b
+      b, as' f as
+      es b' g b
+      as es' c es
+      g, es' b es
+      b, as' f as
+      < es g >4. d8\rest
       %d4\rest_\markup "D.C. sino al fine."
     }
   >>
