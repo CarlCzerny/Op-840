@@ -99,14 +99,18 @@ RH= \relative c' {
   \acciaccatura a, es'-4-. c-1-.
   b-2 r r4^\markup "Fine."
   %\offsetPositions #'(1 . 0)
-  \key es \major
-  %\set Staff.beatStructure = #'(4 )
-  %\mark \markup { \bold "C moll." \italic "(Ut mineur)" }
-
-  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
-
   \bar ":..:"
   \key es \major
+  g,16-1_\markup { \dynamic p \italic "dol." } ( b-3 es-4 b-2 g'4-5
+  f,16 b es b g'4 )
+  f,16 ( b d-4 f-1 b d f b,-4
+  es4-5 b8-2-. ) r
+  g,16 ( b es b g'4
+  f,16 b es b g'4 )
+  a,16 ( c es-3 f-1 a c es-4 a,
+  b8-. ) b-. b-.\noBeam r
+  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
+
   \bar ":..:"
 }
 
@@ -211,6 +215,45 @@ LH = \relative c' {
   es-. < g b >-. es-. < g c >-.
   f-. < b d >-. f-. < a c es >-.
   < b-4 d-2 > < d-2 f-1 > < b d >\noBeam r
+
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      es,2 es b es es es f
+
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      es8-4 b'-1 g-2 b-1
+      es,8 b' g b
+      b, a' f a
+      es b' g b
+      es, b' g b
+      es, b' g b
+      f es' c es
+      < b d >4. d,8\rest
+      %d4\rest_\markup "D.C. sino al fine."
+    }
+  >>
 }
 
 \score
