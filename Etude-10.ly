@@ -64,7 +64,9 @@ RH= \relative c' {
   < h e g >2 r8 q q q
   < dis-2 fis-4 >16 ( h cis dis e-1 fis gis ais h8-5-.\> ) h-3-. h-. h-.\!
   c!-4-. \p c16 ( h a4-2_> ) a8-4-. a16-4 ( g fis4_> )
-
+  g8-3-. g16-1 ( h-2 e4.-5_> ) ( d!16-4 c h a-1 g-3 fis )
+  h8-. h-. g-. e-2-. h-. h-. cis-. dis-.
+  e-. h-. g'-. h,-. e-. r r4-\markup "Fine." \bar ":..:"
   \key e \major
 
   \bar ":..:"
@@ -125,6 +127,41 @@ LH = \relative c {
   d ) d, r2
   r16 e,-5 ( fis g a h-1 cis-3 dis ) e4-1 ( g-2
   h ) h, r2
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      dis2 dis e a, h h s2
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      dis8 < fis a c > q q
+      dis < fis a h > q q
+      e < g h > q q
+      a, < c fis > q q
+      h < e g > q q
+      h < fis' a > q q
+      < e g >4 q < e g >8 d8\rest d4\rest
+    }
+  >>
   \key e \major
   <<
 
