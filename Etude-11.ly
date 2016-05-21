@@ -135,8 +135,8 @@ RH= \relative c'' {
   )
   d'-2 \sf_\> ( as'8 f d\! )
   c4 c8 es4 d8 c4 r8 R4.
-  \bar ":..:"
-  < g h d >4. < fis c' d > < g h d >4 g'8-5 (
+  \bar ":..:" \break
+  < g h d >4. \p _\< < fis c' d >_\> < g h d >4\! g'8-5 (
   fis4 g8 ) q4.
   < fis, c' d > < g h d > ( d'8-2 a'-5 g-4 g4.-5 )
   < a, c fis-4 > < h! d f! > < c es >
@@ -294,7 +294,11 @@ LH = \relative c' {
   < f,~ as~ c~ d~> q
   < g c es > < g h f' >
   < c es >8 ( g' es c ) r r
-  %\stemUp e h'4\rest_\markup "D.C. sino al fine."
+  g4.-3 ( as! g ) R4. g
+  as g < f h > < es c' > d g as!
+  < f as c d > < g d' f >
+  < c-5 es-2 >8 g-1_\markup "D.C. sino al fine." ( es-5 c-5 ) r
+  r
 }
 
 \score
