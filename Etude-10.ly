@@ -139,9 +139,17 @@ LH = \relative c {
       \override Fingering.avoid-slur = #'inside
       \override Slur.direction = #UP
       \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      dis2 dis e a, h h s2
+      dis2 dis e a, h h s1
+
+      \key e \major
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      \set Staff.beatStructure = #'(1 1 1 1 )
+      \clef treble
+      \tuplet 3/2  { e'8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
+      \tuplet 3/2  { dis,-5 a' h dis, a' h dis, a' h }
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -151,25 +159,19 @@ LH = \relative c {
       \override Fingering.avoid-slur = #'inside
       \override Slur.direction = #DOWN
       \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
-      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      dis8 < fis a c > q q
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      dis,,8 < fis a c > q q
       dis < fis a h > q q
       e < g h > q q
       a, < c fis > q q
       h < e g > q q
       h < fis' a > q q
       < e g >4 q < e g >8 d8\rest d4\rest
+      e'4 e e e
     }
   >>
-  \key e \major
-  <<
 
-
-
-    %d4\rest_\markup "D.C. sino al fine."
-
-  >>
 }
 
 \score
@@ -179,10 +181,10 @@ LH = \relative c {
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 10.
+          \number { \exercise "." }
         }
         \line \large { E Moll }
-        \italic \line { Mi mainur. }
+        \italic \line { Mi mineur. }
       }
     }
     shortInstrumentName = ""
