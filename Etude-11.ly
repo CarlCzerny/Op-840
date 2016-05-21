@@ -37,6 +37,11 @@ myPatternII = {
   c8-.\noBeam c16 ( c16 c16 c16 c8-.\noBeam )
   c16 ( c16 c16 c16 c4. )
 }
+myPatternIII = {
+  c8-.\noBeam  c16 ( c16 c16 c16 c8-.\noBeam )
+  c16 ( c16 c16 c16 c8-.\noBeam )
+  c16 ( c c c )
+}
 
 RH= \relative c'' {
   \time 3/8
@@ -65,15 +70,21 @@ RH= \relative c'' {
   d8-4 h-. ) g-.
   \changePitch \myPatternI { c-3 d c h c d h g }
   \changePitch \myPatternII {
-    e'-5 d-4 c-3 h-2 c-1 fis-5
+    e'-5_\markup \italic "cres." d-4 c-3 h-2 c-1 fis-5
     e-4 d-3 cis-2 d-1 g-4
   }
   \ottava #0
   R4.
-  \changePitch \myPatternII { g,-3 a g fis g e f! e dis e c }
+  \changePitch \myPatternII { g,-3 \f a g fis g e f! e dis e c }
   \slashedGrace d8 c8 ( h-. ) c-.
   \changePitch \myPatternII { d e d cis d h c! h ais h g }
-
+  g8 ( a-. ) h-.
+  \changePitch \myPatternIII {
+    c-4 d-4 c h c d-4
+    e-4 d-4 c dis e-3
+    f-4 e dis e-3
+  }
+  f8-1 ( a-. ) c-.
   r4-\markup "Fine." \bar ":..:"
   \key es \major
   \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
@@ -117,6 +128,11 @@ LH = \relative c' {
       c e g h, f' g
       c, e g h, f' g
       c, e g
+      \clef bass
+      \stemDown a, c d \stemUp
+      h ( d h-2
+      \stemDown g-1 f!-2 d-4 )
+      \stemUp
 
     } \\ {
       \voiceTwo
@@ -132,6 +148,7 @@ LH = \relative c' {
       c='4. c c c
       g g g g
       c h c h c
+      a g s c, c c c g g g g c h c a g g c
     }
   >>
   \stemUp e h'4\rest_\markup "D.C. sino al fine."
