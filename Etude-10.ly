@@ -82,10 +82,21 @@ RH= \relative c' {
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(1 1 1 1 )
   \tuplet 3/2
-  { h8-5 ( a-4 fis-3 ) dis-2-. dis-2-. dis-2-.
+  {
+    h8-5 ( a-4 fis-3 ) dis-2-. dis-2-. dis-2-.
     h'8 ( a fis ) dis-. dis-. dis-.
-  e-1 ( gis h gis-2 h e } h4._> gis16 )
-
+    e-1 ( gis h gis-2 h e
+  } h4.._> gis16 )
+  \tuplet 3/2
+  {
+    h8 ( a fis ) dis-. dis-. dis-.
+    h'8 ( a fis ) dis-. dis-. dis-.
+    e ( gis h gis h e
+  }  h2-3_> )
+  h4-1 h gis'-3_> ( fis8. e16
+  dis8.-4 cis16 h8. a16-1 gis8.-3 fis16-2 a8.-4 cis16-5 )
+  h8.-4 ( gis16 e8.-1 ) e16-3 ( dis8. a'16 fis8. dis16
+  e2 ) r2
   \bar ":..:"
 }
 
@@ -225,9 +236,64 @@ LH = \relative c {
       dis dis dis dis
       h h h h
       e e e e
-      \tuplet 3/2 { a,8 cis e a, cis e a, cis e a, cis e 
-      gis,
+      \tuplet 3/2 {
+        a,8 cis e a, cis e a, cis e a, cis e
+        gis, h e gis, h e gis, h e gis, h e
+        dis, fis h dis, fis h e, gis h e, gis h
+        h, dis fis h fis dis
       }
+      \stemUp h d8\rest d4\rest
+    }
+  >>
+  \clef treble
+  \omit TupletNumber
+  \override TupletBracket.bracket-visibility = ##f
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+  < h' fis' a >8[ r q] r q [ r q ] r
+  < h e gis >8[ r q] r q [ r q ] r
+  < h fis' a >8[ r q] r q [ r q ] r
+  < e gis >4 q q q
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      \set Staff.beatStructure = #'(1 1 1 1 )
+      \tuplet 3/2  {
+        gis,8 h e gis, h e gis, h e gis, h e
+        a, cis fis a, cis fis a, cis fis a, cis fis
+        h, e gis h, e gis h, fis' a h, fis' a
+        e gis h e, gis h
+      }
+
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      gis,4 gis gis gis
+      a a a a
+      h h h h
+      e e
+      \stemUp e h'4\rest_\markup "D.C. sino al fine."
     }
   >>
 }
@@ -267,12 +333,12 @@ LH = \relative c {
     }
   >>
   \layout {
-    indent = #25
+
     ragged-last-bottom = ##t
     ragged-last = ##t
     ragged-right = ##f
     ragged-bottom = ##t
-    line-width = #180
+    line-width = #190
   }
   \midi { }
 }
