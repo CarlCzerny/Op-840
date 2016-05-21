@@ -4,7 +4,11 @@
 
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
+\paper {
 
+  left-margin = 10
+  %annotate-spacing = ##t
+}
 exercise ="11"
 #(set-global-staff-size 20)
 
@@ -132,6 +136,11 @@ RH= \relative c'' {
   d'-2 \sf_\> ( as'8 f d\! )
   c4 c8 es4 d8 c4 r8 R4.
   \bar ":..:"
+  < g h d >4. < fis c' d > < g h d >4 g'8-5 (
+  fis4 g8 ) q4.
+  < fis, c' d > < g h d > ( d'8-2 a'-5 g-4 g4.-5 )
+  < a, c fis-4 > < h! d f! > < c es >
+  d8 ( f as ) as ( g h,! ) c4 r8 R4. \bar ":..:"
 }
 
 LH = \relative c' {
@@ -284,7 +293,7 @@ LH = \relative c' {
   h'-2 c
   < f,~ as~ c~ d~> q
   < g c es > < g h f' >
-  < c es >8 ( g es c ) r r
+  < c es >8 ( g' es c ) r r
   %\stemUp e h'4\rest_\markup "D.C. sino al fine."
 }
 
@@ -323,11 +332,11 @@ LH = \relative c' {
     }
   >>
   \layout {
-
     ragged-last-bottom = ##t
     ragged-last = ##t
     ragged-right = ##f
     ragged-bottom = ##t
+    left-margin = #10
     line-width = #190
   }
   %\midi { }
