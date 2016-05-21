@@ -42,6 +42,7 @@ myPatternIII = {
   c16 ( c16 c16 c16 c8-.\noBeam )
   c16 ( c c c )
 }
+myPatternIV = { c16 ( c c c c8-.\noBeam ) }
 
 RH= \relative c'' {
   \time 3/8
@@ -85,6 +86,34 @@ RH= \relative c'' {
     f-4 e dis e-3
   }
   f8-1 ( a-. ) c-.
+  c-5 \sf ( g-. ) e-.
+  g-5 ( f-. ) d-.
+  c4 r8 R4. \bar ":..:"
+  < g-1 h-3 d-5 >8-. q-. q-. q-. q-. q-.
+  < fis-1 a-2 d-5 > q q q q q
+  < a-2 c-4 d-5 > q q q q q
+  < g h d > q q q q q
+  d'8-3-.\noBeam \p
+  \changePitch \myPatternIV {
+    e-4 d cis d-1 h'-5
+    c!-4 h a h c-4
+    d-4 c h c a-1
+  }
+  h16-4 ( a-3 gis-2 a-5 )
+  fis-3 e d e fis g!-1
+  \ottava #1
+  a h c-1 d e fis
+  g8-5 g g g_\< g g\!
+  \changePitch \myPatternII {
+    g-3 \f a-4 g fis g e f! e dis f c
+  }
+  d16 ( c h c h c
+  \changePitch \myPatternII {
+    d ) e d cis d h c! h ais h g
+  }
+  h16-3 g-1 fis-2 g-1 a-2 h-1
+  c-2 d c h c e-4
+  d-3 e d cis-2 d-1 f-4
   r4-\markup "Fine." \bar ":..:"
   \key es \major
   \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
@@ -133,7 +162,14 @@ LH = \relative c' {
       h ( d h-2
       \stemDown g-1 f!-2 d-4 )
       \stemUp
-
+      c e g c, e g c, e g c, e g
+      g, h f' g, d' f
+      g, h f' g, d' f
+      c e g h, f' g
+      c, e g a, c f
+      g, c e g, h f'
+      c e g
+      c, d8\rest d8\rest
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -145,13 +181,87 @@ LH = \relative c' {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
-      c='4. c c c
+      c'='4. c c c
       g g g g
       c h c h c
       a g s c, c c c g g g g c h c a g g c
     }
   >>
-  \stemUp e h'4\rest_\markup "D.C. sino al fine."
+  g'8-3-.\noBeam
+  \changePitch \myPatternIV {
+    a-2 g fis g-3 h-1
+    c-2 h ais h-3 c-2
+    d-1 c h c-2 a-4
+    h-1 f gis a-2 fis-4
+    g-1 fis e fis-2 d-4 [
+  } e-. fis-. ]
+  g4. ( d8-. ) r r
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
+      g4. g d d d d s
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
+      g=8 < h d > q
+      g q q
+      d < a' c > q d, q q d q q d q q
+      < g h >4 d8\rest
+    }
+  >>
+  R4.
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
+      c8 e g c, e g c, e g c, e g
+      g, h f' g, d' f g, h f' g, d f'
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
+      c=4. c c c
+      g g g g
+      c h c f g g
+    }
+  >>
+  %\stemUp e h'4\rest_\markup "D.C. sino al fine."
 }
 
 \score
@@ -196,5 +306,5 @@ LH = \relative c' {
     ragged-bottom = ##t
     line-width = #190
   }
-  \midi { }
+  %\midi { }
 }
