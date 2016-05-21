@@ -55,6 +55,16 @@ RH= \relative c' {
   r16 h ( cis dis e-1 gis g a h8-. ) < g h >-. < fis a >-. < e g >-.
   < dis-2 fis-3 >-. < e-1 g-4 >-. < dis fis >-. < e g >-. < dis fis >-.
   h [ ( \p dis fis ) ]
+  a8-5-.\noBeam a16-4 ( g fis4-> ) c'8-5-.\noBeam c16-4 ( h a4-> )
+  g8-1-.\noBeam g16-3 ( a h4-> ) fis8-2-.\noBeam fis16-2 ( g a4-> )
+  g8-. e-. g-. e-. h'-. h,-. cis-. dis-.
+  e8-. h-. g'-. h,-. e-. r r4
+  < d! g h >2 r8 q q q
+  < fis -2 a-4 >16 ( d e fis g-1 a h cis d8-. ) a-. fis-. dis-.
+  < h e g >2 r8 q q q
+  < dis-2 fis-4 >16 ( h cis dis e-1 fis gis ais h8-5-.\> ) h-3-. h-. h-.\!
+  c!-4-. \p c16 ( h a4-2_> ) a8-4-. a16-4 ( g fis4_> )
+
   \key e \major
 
   \bar ":..:"
@@ -76,6 +86,8 @@ LH = \relative c {
   < e g h >2 r8 q q q
   < e g h >2 r8 q q q
   < e g h >2 r8 e'-1-. dis-. e-.
+  h-3-. ais-. h-. ais-. b-. r r4
+  \clef treble
   <<
     {
       \voiceOne
@@ -90,7 +102,9 @@ LH = \relative c {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      c
+      dis8 < fis a h > q q dis < fis a c > q q
+      e < g h > q q a, < c fis > q q
+      h < e g > q q h < fis a > q q
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -102,18 +116,20 @@ LH = \relative c {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      c
+      dis'2 dis e a, h h
     }
   >>
-
-
+  < e g >4 q < e g >8 r r4
   \clef bass
-
+  r16 g,,-5 ( a h c d-1 e-3 fis-2 ) g4-1 ( h-2
+  d ) d, r2
+  r16 e,-5 ( fis g a h-1 cis-3 dis ) e4-1 ( g-2
+  h ) h, r2
   \key e \major
   <<
 
 
-    c d8\rest
+
     %d4\rest_\markup "D.C. sino al fine."
 
   >>
