@@ -123,7 +123,14 @@ RH= \relative c'' {
   \bar ":..:"
   \key es \major
   \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
-
+  < g c es >4._\markup { \dynamic p \italic "legato" }
+  ( < f h d > < es c' > < f as d > < d g h >
+  < es g c > < g h d >
+  g8 h d
+  < g, d' f >4._\< < g c es >
+  )
+  d'-2 \sf_\> ( as'8 f d\! )
+  c4 c8 es4 d8 c4 r8 R4.
   \bar ":..:"
 }
 
@@ -272,6 +279,12 @@ LH = \relative c' {
       c h c f g g
     }
   >>
+  \key es \major
+  c4.-1 ( g-3 as-2 f-4 g-1 c,-2 g~) g
+  h'-2 c
+  < f,~ as~ c~ d~> q
+  < g c es > < g h f' >
+  < c es >8 ( g es c ) r r
   %\stemUp e h'4\rest_\markup "D.C. sino al fine."
 }
 
