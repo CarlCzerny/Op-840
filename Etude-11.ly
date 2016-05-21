@@ -114,7 +114,13 @@ RH= \relative c'' {
   h16-3 g-1 fis-2 g-1 a-2 h-1
   c-2 d c h c e-4
   d-3 e d cis-2 d-1 f-4
-  r4-\markup "Fine." \bar ":..:"
+  e-3 f-4 e-3 dis-2 e-1 c'-5
+  h a g f-1 e-2 d-1
+  a'-5 g f e d-1 c-4
+  \ottava #0
+  h a g-1 f-4 e d
+  c8-. g'-. e-. c-. r r^\markup "Fine."
+  \bar ":..:"
   \key es \major
   \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
 
@@ -244,7 +250,11 @@ LH = \relative c' {
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
       c8 e g c, e g c, e g c, e g
-      g, h f' g, d' f g, h f' g, d f'
+      g, h f' g, d' f g, h f' g, h f'
+      \stemDown
+      c e g h, d g c, e g f a d
+      g, c e g, h f'
+      < c e > q q q d,8\rest d8\rest
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -258,6 +268,7 @@ LH = \relative c' {
       \set Staff.beatStructure = #'(3 )  %% abhängig vom Takt
       c=4. c c c
       g g g g
+      \stemUp
       c h c f g g
     }
   >>
