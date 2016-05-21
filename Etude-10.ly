@@ -68,6 +68,23 @@ RH= \relative c' {
   h8-. h-. g-. e-2-. h-. h-. cis-. dis-.
   e-. h-. g'-. h,-. e-. r r4-\markup "Fine." \bar ":..:"
   \key e \major
+  \mark \markup { \bold "E Dur." \italic "(Mi" \italic " majeur.)" }
+  gis4-3-\markup { \dynamic p \italic "dol.c" } ( gis h4.-5_> a16 gis )
+  fis8.-2 ( gis16 fis8. fis16 fis2 )
+  fis4-2 fis ( a4.-4_> gis16 fis
+  e8.-1 fis16 e8. fis16 e2 )
+  cis'4-2 ( cis e4.-4_> dis16 cis
+  h4-1 gis'8.-3 fis16 e8.-1 dis16-4 cis8. h16 )
+  a8.-1 ( h16 a8.-3 h16 gis8. h16 gis8. h16-5 )
+  fis2-2 r
+  \omit TupletNumber
+  \override TupletBracket.bracket-visibility = ##f
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Staff.beatStructure = #'(1 1 1 1 )
+  \tuplet 3/2
+  { h8-5 ( a-4 fis-3 ) dis-2-. dis-2-. dis-2-.
+    h'8 ( a fis ) dis-. dis-. dis-.
+  e-1 ( gis h gis-2 h e } h4._> gis16 )
 
   \bar ":..:"
 }
@@ -143,13 +160,6 @@ LH = \relative c {
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
       dis2 dis e a, h h s1
 
-      \key e \major
-      \omit TupletNumber
-      \override TupletBracket.bracket-visibility = ##f
-      \set Staff.beatStructure = #'(1 1 1 1 )
-      \clef treble
-      \tuplet 3/2  { e'8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
-      \tuplet 3/2  { dis,-5 a' h dis, a' h dis, a' h }
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -161,17 +171,65 @@ LH = \relative c {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/4)
       \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
-      dis,,8 < fis a c > q q
+      dis8 < fis a c > q q
       dis < fis a h > q q
       e < g h > q q
       a, < c fis > q q
       h < e g > q q
       h < fis' a > q q
       < e g >4 q < e g >8 d8\rest d4\rest
-      e'4 e e e
     }
   >>
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
 
+      \key e \major
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      \set Staff.beatStructure = #'(1 1 1 1 )
+      \clef treble
+      \tuplet 3/2  { e'8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
+      \tuplet 3/2  { dis,-5 a' h dis, a' h dis, a' h dis, a' h }
+      \tuplet 3/2 { h, dis a' h, dis a' h, dis a' h, dis a' }
+      \tuplet 3/2  { e8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
+      \clef bass
+      a,4 a a a
+      gis gis gis gis
+      dis dis e e
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      e'4 e e e
+      dis dis dis dis
+      h h h h
+      e e e e
+      \tuplet 3/2 { a,8 cis e a, cis e a, cis e a, cis e 
+      gis,
+      }
+    }
+  >>
 }
 
 \score
