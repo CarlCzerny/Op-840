@@ -35,26 +35,24 @@ exercise ="12"
 }
 
 myPatternI = {
-  c4 ( c8. c16 c4 c4 ) c8 c c16 ( c c c c8-. ) c c4
+  c4 ( c8. c16  c4 c4 ) c8 c c16 ( c c c c8-. ) c c4
+
 }
-myPatternII = {
-  c8-.\noBeam c16 ( c16 c16 c16 c8-.\noBeam )
-  c16 ( c16 c16 c16 c4. )
+
+myPatternII={
+  c4 c8. c16 c4 c4
 }
-myPatternIII = {
-  c8-.\noBeam  c16 ( c16 c16 c16 c8-.\noBeam )
-  c16 ( c16 c16 c16 c8-.\noBeam )
-  c16 ( c c c )
+
+myPatternIII={
+  c4 c8. c16
 }
-myPatternIV = { c16 ( c c c c8-.\noBeam ) }
 
 RH= \relative c' {
   \time 4/4
   \key es \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
-  \set Timing.baseMoment = #(ly:make-moment 1/8)
-  \set Staff.beatStructure = #'(4 )  %% abhängig vom Takt
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Staff.beatStructure = #'(2 2)  %% abhängig vom Takt
   \set fingeringOrientations = #'(up)     %% für Akkorde!
   \override Fingering.direction = #UP      %% für Einzelnoten!
   \override Fingering.padding = #0.8
@@ -62,18 +60,68 @@ RH= \relative c' {
   \override Fingering.avoid-slur = #'inside
   \override Slur.direction = #UP
   \mark \markup "Marcia. Maestoso."
+  \once \set fingeringOrientations = #'(left)     %% für Akkorde!
   \changePitch \myPatternI {
-    < es-1 g-2 c-5 > q q < d g h-4 > < f g d'-5 >
-    < es g c-5 > r g-4 es g es c r r
+    < es-1 g-2 c-5 > q q
+    < d g h-4 > < f g d'-5 >
+    < es g c-5 > r g_4 es g es c r r
   }
-  \changePitch \myPatternI {
-    < g' h d-4 > < g h d > q < g d' f-5 > < g c es-4 > < g h d > r
-    d h d h g r r
+  \changePitch \myPatternII {
+    < g' h d-4 > < g h d > q < g d' f-5 > < g c es-4 >
   }
-  r^\markup "Fine."
+  < g h d >8 r
+  \stemUp
+  \change Staff = "Bass" d16^( h d h g8 )
+  #(ly:expect-warning "Zusammen")
+  d'8\rest
+  #(ly:expect-warning "Zusammen")
+  d4\rest
+  \change Staff = "Discant" \stemNeutral
+
+  \changePitch \myPatternII { < h' d as'-5> < h d as'> q q q }
+  < c e g-4>4 g'16-3 ( fis g a-4 b!4-5 cis,-2 )
+  d16 ( g b d c!-4 b a g fis-4 es d c b_5 as g fis-2 )
+  g8 r g,8. g16 g8 r r4
   \bar ":..:"
-  \key es \major
-  \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
+  \changePitch \myPatternII {
+    < g' d' f! > < g d' f > q < g c es> q
+  }
+  \override Fingering.direction = #DOWN      %% für Einzelnoten!
+  < g h d >8\noBeam g16-1 ( fis-2 g-1\noBeam [ fis-2 g fis ] g8-. ) r r4
+  \changePitch \myPatternII { < d' g h> < d g h> q < es g c > < g, c es > }
+  \override Fingering.direction = #UP      %% für Einzelnoten!
+
+  < g h d >8  r g'16-5 ( fis-4 g fis g fis g fis g f es d-2 )
+  #(ly:expect-warning "Oktavenüberprüfung")
+  \changePitch \myPatternIII {
+    < g=' c es > \ff q q  < g c e-4 > q q < c-2 f-5 > <c-1 f-3> q
+  }
+  < c f as >2
+  g'16  c es g f-4 es d c-1 h-4 as g f es-3 d c h-2
+  c8 r c,8. c16 c8 r
+  r4^\markup "Fine."
+  \set Score.printKeyCancellation = ##f
+  \bar ":..:"
+  \key c \major
+  \mark \markup { \bold "C Dur." \italic "(Ut" \italic " majeur.)" }
+  e''4-5 e8. ( d16 c8. h16 c8.-3 a16-1
+  g4-2 ) g8. ( c16 e2-1 )
+  d4-2 ( e-1 f8. e16 f8. g16
+  f2 e4 ) r
+  fis4-3 ( a8.-5 ) a16 a4 ( g16 f e d )
+  d'4-5 d8. d16 d4( c16 h a g )
+  e'16-5 ( c-3 e c a8-. ) as-. c16-5 ( as-3 c as fis8-2 ) fis-.
+  g-1-. b-. d-. b-. g4-. r
+  \bar ":..:"
+  f'!8-4 f16-4 ( es-3 d8-2-. ) d16-4 ( c-3 b8-2-. ) g16-3 ( f-2 )
+  g-1 ( g-3 f-2 as-4 g4-3 es16 g f as g4 )
+  < d-3 f-5 >8-. < c-2 es-4 >-. < b-1 d-3 >-. < as-1 c-3 >-.
+  < g-1 b-3 >-. < f as >-. < es g >-. < d f >-.
+  es16 ( g f as g4 es16 g f as g4 )
+  g4-1 c8-3 c16 c4 ( es16-5 d c b )
+  as4-1 as8. as16 d8-4 ( c b as-1 )
+  g16-4 ( es-2 g es c8-. ) c-. f!16 ( d f d b8-. ) b-.
+  c-. es-. g-. es-. g4 r
   \bar ":..:"
 }
 
@@ -89,16 +137,90 @@ LH = \relative c {
   %\override Slur.direction = #UP
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/4)
-  \set Staff.beatStructure = #'(2 2 )  %% abhängig vom Takt
+  \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
   \changePitch \myPatternI {
     c-4 es-2 c g' g, c r g'-1 es-2 g es c r r
   }
-  g'4 ( g, h c )
-  g8 r d'16 ( h d h g8 ) r r4
+  g'4_( g, h c )
+  \stemDown
+  #(ly:expect-warning "Zusammen")
 
-  \key es \major
+  g8 r d'16_( h d h g8 ) g8\rest
+  #(ly:expect-warning "Zusammen")
+
+  g4\rest %g8\rest g4\rest
+  \stemNeutral
+  #(ly:expect-warning "Oktavenüberprüfung")
+
+  < f= h d >4 q q q
+  < es g c > q < es g cis> < es g b >
+  < d g b > q < d a' c > q
+  < g b >8 r g,8. g16 g8 r r4
+  \override Fingering.direction = #DOWN  %% für Einzelnoten!
+  \set Staff.beatStructure = #'(2 2 )
+  h8-3  ( g h g  c-2  g-5 c-3 es-2 )
+  \override Fingering.direction = #UP
+  g8\noBeam g16-1 [ ( fis-2\noBeam ] g fis g fis
+  g8-. ) d-. h-. g-.
+  f'! ( g, f' g, es'-2 g-1 c,-3 es-2 )
+  g, r < g' h d > r8 r2
+  \override Fingering.direction = #DOWN  %% für Einzelnoten!
+  % \set fingeringOrientations = #'(down) %% für Akkorde!
+  \changePitch \myPatternIII {
+    c,-1 c c < b-2 c-1 > q q < as c > q q
+  }
+  < d c >2
+  < g c es >4 q < g d' f > q
+  < c es>8 r c8. c16 c8 r r4
+  \key c \major
+
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      \clef treble
+      c8 < e g > q q c c < f a > q q
+      c < e g > q q c q q q
+      < d h > ( g < c e > g < d f > g < h d > g )
+      < h d > g < h d > g < c e > g q g
+      c < d fis a > q q c q q q
+      h < d g > q q h q q q
+      c < e a > q q q d < a c > q q
+      < g h >4 q q r
+      h,8 g' d g h, g' d g
+      c, g' e g c, g' e g
+      h, g d g h, g' d g
+      c g' e g c, g' e g
+      e < g c > q q e q q q
+      f < a c > q q fis < c' d> q q
+      g < c e > q q g < d' f > q q
+      < c e >4 q q r
+      c, d8\rest d8\rest
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+
+    }
+  >>
   r_\markup "D.C. sino al fine."
-
 }
 
 \score
