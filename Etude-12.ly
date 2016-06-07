@@ -106,22 +106,24 @@ RH= \relative c' {
   \mark \markup { \bold "C Dur." \italic "(Ut" \italic " majeur.)" }
   e''4-5 e8. ( d16 c8. h16 c8.-3 a16-1
   g4-2 ) g8. ( c16 e2-1 )
-  d4-2 ( e-1 f8. e16 f8. g16
+  d,4-2 ( e-1 \slashedGrace g8 f8.[ e16] f8. g16
   f2 e4 ) r
   fis4-3 ( a8.-5 ) a16 a4 ( g16 f e d )
   d'4-5 d8. d16 d4( c16 h a g )
-  e'16-5 ( c-3 e c a8-. ) as-. c16-5 ( as-3 c as fis8-2 ) fis-.
-  g-1-. b-. d-. b-. g4-. r
+  e'16-5 ( c-3 e c a8-. ) a-. c16-5 ( a-3 c a fis8-2 ) fis-.
+  g-1-. h-. d-. h-. g4-. r
   \bar ":..:"
-  f'!8-4 f16-4 ( es-3 d8-2-. ) d16-4 ( c-3 b8-2-. ) g16-3 ( f-2 )
-  g-1 ( g-3 f-2 as-4 g4-3 es16 g f as g4 )
-  < d-3 f-5 >8-. < c-2 es-4 >-. < b-1 d-3 >-. < as-1 c-3 >-.
-  < g-1 b-3 >-. < f as >-. < es g >-. < d f >-.
-  es16 ( g f as g4 es16 g f as g4 )
-  g4-1 c8-3 c16 c4 ( es16-5 d c b )
-  as4-1 as8. as16 d8-4 ( c b as-1 )
-  g16-4 ( es-2 g es c8-. ) c-. f!16 ( d f d b8-. ) b-.
-  c-. es-. g-. es-. g4 r
+  f'!8-4 f16-4 ( es-3 d8-2-.\noBeam ) d16-4 ( c-3 b8-2-.\noBeam ) g16-3 ( f-2 )
+  g8-1-.\noBeam ( g16-3 f-2 )
+  e-1 ( g-3 f-2 a-4 g4-5 e16 g f a g4 )
+
+  < d'-3 f-5 >8-. < c-2 e-4 >-. < h-1 d-3 >-. < a-1 c-3 >-.
+  < g-1 h-3 >-. < f a >-. < es g >-. < d f >-.
+  e16 ( g f a g4 e16 g f a g4 )
+  g4-1 c8.-3 c16 c4 ( e16-5 d c h ) |
+  a4-1 a8. a16 d8-4 ( c b a-1 )
+  g16-4 ( e-2 g e c8-. ) c-. f!16 ( d f d h8-. ) h-.
+  c-. [ e-. g-. e-. ] g4 r
   \bar ":..:"
 }
 
