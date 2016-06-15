@@ -19,6 +19,14 @@ offsetPositions =
                                             ,(+ (cdr offsets) (cdr (cadddr (ly:slur::calc-control-points grob))))))
    #})
 
+%{
+#(let loop ((c 1000))
+   (if (> c 0)
+       (begin
+        (ly:expect-warning "octave check failed")
+        (loop (1- c)))))
+%}
+
 \paper {
   #(set-paper-size "a4")
   myStaffSize = #20
@@ -30,8 +38,10 @@ offsetPositions =
   %% system-system-spacing.extra-distance = #0
   left-margin = #20
   %% system-system-spacing.basic-distance = #0
-  page-count = #2
+  %page-count = #2
   top-margin = #20
+  ragged-right = ##f
+  indent = #25
   bottom-margin = #10
   markup-system-spacing = #'((basic-distance . 15)
                              (padding . 0.5)
@@ -61,6 +71,10 @@ offsetPositions =
   \context {
     \Staff
     \omit ClefModifier
+    %\override Clef.break-visibility = #'#(#f #t #t)
+    explicitClefVisibility = #end-of-line-invisible
+    explicitKeySignatureVisibility = #end-of-line-invisible
+    \override Clef.full-size-change = ##t
   }
 
   \context {
@@ -72,5 +86,6 @@ offsetPositions =
     %% \override NonMusicalPaperColumn.line-break-permission = ##f
     %% \override NonMusicalPaperColumn.page-break-permission = ##f
     \override RehearsalMark.self-alignment-X = #LEFT
+    \override KeyCancellation.break-visibility = #'#(#f #t #t)
   }
 }
