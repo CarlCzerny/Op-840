@@ -100,7 +100,6 @@ RH= \relative c' {
   g'16  c es g f-4 es d c-1 h-4 as g f es-3 d c h-2
   c8 r c,8. c16 c8 r
   r4^\markup "Fine."
-  \set Score.printKeyCancellation = ##f
   \bar ":..:"
   \key c \major
   \mark \markup { \bold "C Dur." \italic "(Ut" \italic " majeur.)" }
@@ -130,7 +129,6 @@ RH= \relative c' {
 LH = \relative c {
   \clef bass
   \key es \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
@@ -191,23 +189,24 @@ LH = \relative c {
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
       \clef treble
-      c8 < e g > q q c c < f a > q q
+      c8 < e g > q q c < f a > q q
       c < e g > q q c q q q
-      < d h > ( g < c e > g < d f > g < h d > g )
-      < h d > g < h d > g < c e > g q g
-      c < d fis a > q q c q q q
+      < d h >_( g, < c e > g < d' f > g, < h d > g )
+      < h d >_( g' < h, d > g' < c, e > g' q g )
+      c, < d fis a > q q c q q q
       h < d g > q q h q q q
-      c < e a > q q q d < a c > q q
-      < g h >4 q q r
-      h,8 g' d g h, g' d g
+      c < e a > q q d < a' c > q q
+      < g h >4 q q h4\rest
+      \clef bass
+      h,,8 g' d g h, g' d g
       c, g' e g c, g' e g
-      h, g d g h, g' d g
-      c g' e g c, g' e g
+      h, g' d g h, g' d g
+      c, g' e g c, g' e g
       e < g c > q q e q q q
       f < a c > q q fis < c' d> q q
       g < c e > q q g < d' f > q q
-      < c e >4 q q r
-      c, d8\rest d8\rest
+      \stemDown
+      < c e >4_\markup "D.C. sino al fine." q q  d,4\rest
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -219,10 +218,14 @@ LH = \relative c {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-
+      #(ly:expect-warning "Oktavenüberprüfung")
+      c='2 c2 c c s1 s1
+      c2 c h h c d s1
+      #(ly:expect-warning "Oktavenüberprüfung")
+      h=,2 h c c h h c c
+      e e f fis g g
     }
   >>
-  r_\markup "D.C. sino al fine."
 }
 
 \score
@@ -267,5 +270,5 @@ LH = \relative c {
     left-margin = #10
     line-width = #190
   }
-  %\midi { }
+  \midi { }
 }
