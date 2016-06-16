@@ -7,6 +7,7 @@
 \paper {
 
   left-margin = 10
+  page-count = #2
   %annotate-spacing = ##t
 }
 exercise ="48"
@@ -130,9 +131,26 @@ RH= \relative c' {
   fis'8 ) r fis r fis r h,16-4 ( a gis a-1
   d8.-2 fis16-4 a8.-1 d16-2 ) \ottava #1 fis4-3 ( g16-4 fis e d
   cis4.-2 e8 g ) \ottava #0 r r4
-
-
-  % R4. \bar ":..:"
+  g,8-5-. r g-. r g-. r
+  \once \override Slur.positions = #'(1 . 0)
+  cis,16-2 ( a-1 e'-3 cis-2
+  g'8-5-. ) r g-. r g-. r cis16-2\< ( a e' cis
+  a'8-5\> g16 fis\! e d-1 cis-4 h a g fis-3 e d-1 cis-3 h c
+  d8-. ) r < a fis' >-. r < fis d' >-. r r4
+  \bar ":..:"
+  fis'8-3-. \p r fis-. r fis-. r g16-4 ( fis e d-1
+  cis4.-3 ais8_2 fis4_1 ) r
+  fis'8-3-.-\markup { \italic "cresc." }  r fis-. r fis ( eis16 fis
+  g-4 fis e d )
+  cis2-2 cis4-3 (
+  \override Fingering.direction = #DOWN
+  h16-2 a-1 gis-2 a-1
+  \override Fingering.direction = #UP
+  fis'8-. ) r fis-. r fis-. r e16-4 ( d-3 cis-2 d-1
+  d'8-. ) \sf r d-. r d4.-> (  gis,8
+  cis-3 ) a,16-1 ( h cis d-1 e fis g!-4 fis e fis g a h cis
+  d8-. ) r < fis,, a d >-. r q-. r r4
+  \bar ":|."
 }
 
 LH = \relative c {
@@ -175,10 +193,9 @@ LH = \relative c {
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(2 2)  %% abhängig vom Takt
   \override Fingering.direction = #DOWN  %% für Einzelnoten!
-
   \change Staff = "Discant"
-  \override Script.direction = #DOWN  %% für Einzelnoten!
-
+  \override Script.direction = #DOWN  %% für Arikulationszeichen
+  \override Script.self-alignment-X = #CENTER
   \stemDown
   \override Beam.positions = #'(-4 . -5)
   a'8-1_. b-2-.  a-1-. g-2-.
@@ -210,20 +227,42 @@ LH = \relative c {
       \repeat unfold 3 { g a cis a g a cis a }
       \revert Beam.positions
       a, cis e g a, cis e g s1
+      s s s s2
+      \mergeDifferentlyHeadedOff
+      g!8 cis a! cis
+      \repeat unfold 2 { fis,8 a d a }
+      d, e gis e d e gis e
+      a, fis' d fis a, g'! e g
+      s d_( a_\markup "D.C. sino al fine." fis d )
+      d'8\rest d4\rest
     } \\ {
       \voiceTwo
+      \set fingeringOrientations = #'(left) %% für Akkorde!
       #(ly:expect-warning "Oktavenüberprüfung")
       f=,2 f g g a a
       < d f >8 a q a q d8\rest d4\rest
-      \override NoteColumn.force-hshift = #1
+      \override NoteColumn.force-hshift = #0.7
       d2 d d d d d
       e e e e e e
       \revert NoteColumn.force-hshift
+      a, a
+      < d fis >8 a' d a d, d8\rest d4\rest
+      \override Slur.direction = #UP
+      < h'-2 d-1 >8 ( fis q fis q fis q fis
+      < ais-3 e'-\tweak extra-offset #'(-1.5 . 0)-1 > fis q fis q fis q fis
+      )
+      < h-2 d-1 >8 ( fis q fis q fis q fis )
+      < ais cis > fis q fis
+      < e g >2
+      \override NoteColumn.force-hshift = #0.7
+      d d h h
+      \revert NoteColumn.force-hshift
+      a a
+      < d fis >8
     }
   >>
 
-  s-1_\markup "D.C. sino al fine."
-  r
+
 }
 
 \score
@@ -268,5 +307,5 @@ LH = \relative c {
     left-margin = #10
     line-width = #190
   }
-  %\midi { }
+  \midi { }
 }
