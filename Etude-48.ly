@@ -5,10 +5,8 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-
   left-margin = 10
   page-count = #2
-  %annotate-spacing = ##t
 }
 exercise ="48"
 #(set-global-staff-size 20)
