@@ -5,8 +5,11 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-  left-margin = 10
+
+  left-margin = 15
+  right-margin = 15
   page-count = #2
+  annotate-spacing = ##f
 }
 exercise ="48"
 #(set-global-staff-size 20)
@@ -39,6 +42,7 @@ myPatternI = {
 myPatternII = {
   c16 c [ c c c c c c ]
 }
+nyPattern = { c16 c [ c c ] }
 myPatternIII = {
   c16 ( c c c c8-. ) c
 }
@@ -83,7 +87,7 @@ RH= \relative c' {
   \override Slur.positions = #'(1 . -1)
   \override Fingering.direction = #DOWN
   \changePitch \myPatternIII {
-    e,-2 g-1 b e g r
+    e,-2-\markup { \italic "cresc." } g-1 b e g r
     d,-2 f-1 a d f r
     cis,-2 e-1 a cis e r8
   }
@@ -95,19 +99,34 @@ RH= \relative c' {
   % r16 < c-2 e-4 > [ \p r q r q r q ] r < d-1 f-3 > r q r q r q
   \changePitch \myPatternII {
     r \p < c-2 e-4 > r q r q r q r < d-1 f-3 > r q r q r q
+  }
+  \revert Beam.positions
+  %\override Beam.positions = #'(6 . 6)
+  \override Beam.skip-quanting = ##t
+  \override Beam.beamed-stem-shorten = #'(0 0 0)
+  \override Stem.no-stem-extend = ##t
+  %\revert Beam.positions
+  \changePitch \nyPattern {
     r < e g-4 > r q r < d f-3 > r q r < cis e-4 > r q r q r q
   }
   \set fingeringOrientations = #'(left)     %% für Akkorde!
   %\override Beam.positions = #'(8 . 8)
   \revert Beam.positions
+  \override Beam.positions = #'(-3 . -3)
   \stemNeutral
-  \changePitch \myPatternII {
+  \changePitch \nyPattern {
     r-\markup { \italic "cresc." }
     < cis-1 e-2
     a-\tweak extra-offset #'(-1.5 . 0)-5 >
-    r q r q r q r < d-1 f-3 a-5 > r q r q r q
+    r q r q r q
+  }
+  \override Beam.positions = #'(-2.5 . -2.5)
+
+  \changePitch \nyPattern {
+   r < d-1 f-3 a-5 > r q r q r q
     r < e g a > r q r < d f a > r q
   }
+  \revert Beam.positions
   \override Fingering.direction = #UP
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(2 2 2 2)  %% abhängig vom Takt
@@ -116,13 +135,14 @@ RH= \relative c' {
     a-5 \p gis a f d r
     d'-5 cis d a f r
   }
+  \pageBreak
   es16-2-\markup { \italic "cresc." } g-1 b es g8 r
   \ottava #1
   g,16-1 b-2 es-4 g-1 b8-3 r
   a16-5 \f g f e! d-1 c!-4 b! a \ottava #0
   g-1 f-3 e d cis-2 d e cis
   d-3 a-1 d-2 f-4 a f a f d8 r
-  r4^\markup "Fine."
+  r4^\markup "Fine." \bar ":..:"
   \key d \major
   \mark \markup { \bold "D Dur." \italic "(Ré" \italic " majeur.)" }
   fis8-5-._\markup { \dynamic p \italic "dol." } r fis-. r fis-. r h,16-4 ( a-3 gis-2 a-1
@@ -298,10 +318,10 @@ LH = \relative c {
     }
   >>
   \layout {
-    ragged-last-bottom = ##t
-    ragged-last = ##t
+    ragged-last-bottom = ##f
+    ragged-last = ##f
     ragged-right = ##f
-    ragged-bottom = ##t
+    ragged-bottom = ##f
     left-margin = #10
     line-width = #190
   }
