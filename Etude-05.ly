@@ -4,16 +4,18 @@
 
 \include "Papier+Layout.ly"
 
+exercise ="5"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
-  title               =       "50 Melodische Übungsstücke" 
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 5"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 5 }
-  mutopiaopus         =       "840, No. 5"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -29,8 +31,16 @@
 \paper {
   left-margin = #10
   system-system-spacing.basic-distance = #8
-  min-systems-per-page = #6
+  %min-systems-per-page = #6
   top-margin = #10
+  page-count = #2
+}
+\layout {
+  \context {
+    \Score
+    \override NonMusicalPaperColumn.line-break-permission = ##f
+    \override NonMusicalPaperColumn.page-break-permission = ##f
+  }
 }
 
 RH= \relative c'' {
@@ -102,6 +112,19 @@ RH= \relative c'' {
   \bar ":..:"
 }
 
+Struktur= {
+  s2*4 \break
+  s2*4 \break
+  s2*4 \break
+  s2*4 \break
+  s2*4 \break
+  s2*4 \pageBreak
+  s2*4 \break
+  s2*4 \break
+  s2*4 \break
+  s2*4 \break
+}
+
 LHI = \relative c' {
   \clef bass  \key c \major
   \voiceOne
@@ -146,10 +169,15 @@ LHI = \relative c' {
   b16^( g' es g b, as' f as ) < es-3 g-1 >8 q q d8\rest
   g16 ( h d h g-5 c-2 es-1 c-2 g h d h g h d h )
   g16 ( h d h g c es c )
+  \override Fingering.direction = #UP
   g-5 ( h-2 d-1 h-2 g-1 f es d-4 )
   c16 ( g' es g \stemUp c,8 ) d8\rest \stemDown
   as16 ( f' c f \stemUp as,8 ) d8\rest \stemDown
-  g16 es' c es g, f' d_\markup "D.C. sino al fine." f c-4 es g es \stemUp c,8 d8\rest
+  g,16 es' c es g, f'
+  d f c-4 es g es \stemUp c8
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 5 . 0 )
+  d8\rest_\markup "D.C. sino al fine."
 }
 
 LHII = \relative c' {
@@ -178,7 +206,7 @@ EtudeV =
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 5.
+          \number { \exercise "." }
         }
         \line \large { C Dur }
         \italic \line { Ut majeur. }
@@ -187,33 +215,17 @@ EtudeV =
     shortInstrumentName = ""
   }
   <<
-
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-
-    }
-    \new Staff="Bass" {
-
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
-    }
+    \RH
+    \new Staff="Bass"
+    <<
+      \new Voice = "first"
+      \relative c'
+      \LHI
+      \new Voice= "second"
+      \LHII
+      \new Voice \Struktur
+    >>
   >>
   \layout {
     indent = #15
@@ -222,7 +234,8 @@ EtudeV =
     ragged-bottom = ##f
     line-width = #190
   }
-  \midi { }
-}
 
+  %\midi { }
+}
+#'()
 \EtudeV
