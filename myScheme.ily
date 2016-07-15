@@ -382,37 +382,3 @@ cPII = #(define-music-function (newnotes) (ly:music?)
 #{ \changePitch \patII $newnotes #})
 
 #(define cP changePitch)
-%{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% The example %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-testMusic = { c d e f g f e d <c e> <d f> <e g> <d f> }
-fillerChord = { <c e>2 }
-
-\relative c' {
-  \override  Score.RehearsalMark.self-alignment-X = #LEFT
-
-  \mark "pattern = { c8.-> c16-. }"
-
-  \changePitch { c8.-> c16-. } {
-    \testMusic
-  }
-  \fillerChord
-  \break
-
-  \mark "pattern = { c8 c16( c) }"
-
-  \changePitch { c8 c16( c) } {
-    \testMusic
-  }
-  \fillerChord
-  \fillerChord
-  \break
-
-  \time 6/8
-  \mark "pattern = { c4( c8) c8.( c16) c8-. }"
-  \changePitch { c4( c8) c8.( c16) c8-. } {
-    \testMusic
-  }
-  <c e>4.
-}
-<%}
