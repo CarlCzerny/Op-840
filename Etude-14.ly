@@ -83,23 +83,24 @@ RH= \relative c'' {
   \bar ":..:"
   \key a \major
   \mark \markup { \bold "A Dur." \italic "(La" \italic " majeur.)" }
-  \set fingeringOrientations = #'(left) %% für Akkorde!
-  \override Fingering.direction = #LEFT      %% für Einzelnoten!
+  \set Staff.fingeringOrientations = #'(left) %% für Akkorde!
   <<
     {
-      \override Fingering.direction = #LEFT      %% für Einzelnoten!
-      cis4-5 ( cis8 cis4 cis8
-      cis4-5 h8 a4 cis8 )
-      e8-5 ( d-4-. ) cis-3-. e ( d-. ) cis-.
+      \override Fingering.direction = #DOWN      %% für Einzelnoten!
+      \override Fingering.padding = #0.6
+      \override Fingering.staff-padding = #'()
+
+      <cis-5>4 ( cis8 cis4 cis8
+      <cis-5>4 h8 a4 cis8 )
+      <e-5>8 ( d-4-. ) <cis-3>-. e ( d-. ) cis-.
     }
     \\
     {
-      \override Fingering.direction = #LEFT      %% für Einzelnoten!
       \stemUp
       <a-1>4 \once \omit Flag a8 a4 \once \omit Flag a8
       \stemDown
-      gis4.-2 a4 a8
-      h4-2 a8-1 h4 a8
+      <gis-2>4. a4 a8
+      <h-2>4 <a-1>8 h4 a8
     }
   >>
   \override Fingering.direction = #UP      %% für Einzelnoten!
