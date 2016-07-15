@@ -28,10 +28,7 @@ exercise ="10"
 }
 
 \paper {
-  left-margin = #10
-  system-system-spacing.basic-distance = #8
-  min-systems-per-page = #6
-  top-margin = #10
+
 }
 
 RH= \relative c' {
@@ -293,11 +290,15 @@ LH = \relative c {
       a a a a
       h h h h
       e e
-      \stemUp e h'4\rest_\markup "D.C. sino al fine."
+      \stemUp e
+      \override TextScript.self-alignment-X = #RIGHT
+      \override TextScript.extra-offset = #'( 3 . 0 )
+      h'4\rest_\markup "D.C. sino al fine."
     }
   >>
 }
 
+EtudeX=
 \score
 {
   \new PianoStaff \with {
@@ -315,30 +316,15 @@ LH = \relative c {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   \layout {
-
     ragged-last-bottom = ##t
-    ragged-last = ##t
     ragged-right = ##f
-    ragged-bottom = ##t
-    line-width = #190
   }
-  \midi { }
+  %\midi { }
 }
+#'()
+\EtudeX
