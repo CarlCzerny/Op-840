@@ -3,7 +3,7 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+exercise ="8"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
@@ -12,8 +12,8 @@
   mutopiatitle        =       "50 Melodische Übungsstücke, No. 8"
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 8 }
-  mutopiaopus         =       "840, No. 8"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No. " \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Technique"
@@ -40,7 +40,9 @@ RH= \relative c' {
   \override Fingering.avoid-slur = #'inside
   \override Slur.direction = #UP
   \mark \markup "Allegretto vivace"
-  r16 \f < c-1 e-3 >-. < d-1 f-3 >-._\markup { \italic "stacc." } < e-1 g-3>-. < f-1 a-3 >-. < g h >-. < a c >-. < h d >-.
+  \override TextScript.self-alignment-X = #LEFT
+  r16 \f < c-1 e-3 >-. < d-1 f-3 >-. < e-1 g-3>-._\markup { \italic "stacc." }
+  < f-1 a-3 >-. < g h >-. < a c >-. < h d >-.
   \set fingeringOrientations = #'(up)     %% für Akkorde!
   < c e >-. < d f >-. < e g>-. < f a >-. < g h >-. < a c >-. < h d >-. < c-1 e-3 >-.
   < d-2 f-4>8-. q-. < c e >-. q
@@ -129,11 +131,15 @@ LH = \relative c {
       f, d' as d f, d' as d
       es, c' g c es, c' g c
       f, d' as d g, f' d f
-      c^(_\markup "D.C. sino al fine." es g es c8 ) d,8\rest
+      c^( es g es c8 )
+      \override TextScript.self-alignment-X = #RIGHT
+      \override TextScript.extra-offset = #'( 3 . 0 )
+      d,8\rest_\markup "D.C. sino al fine."
     }
   >>
 }
 
+EtudeVIII=
 \score
 {
   \new PianoStaff \with {
@@ -141,7 +147,7 @@ LH = \relative c {
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 8.
+          \number { \exercise "." }
         }
         \line \large { C Dur }
         \italic \line { Ut majeur. }
@@ -151,25 +157,14 @@ LH = \relative c {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   \layout { }
-  \midi { }
+  %\midi { }
 }
 
+#'()
+
+\EtudeVIII
