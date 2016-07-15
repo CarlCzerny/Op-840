@@ -3,17 +3,18 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+exercise ="2"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 2"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 2 }
-  mutopiaopus         =       "840, No. 2"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -24,6 +25,14 @@
   maintainerEmail     =       "pressephotografin--gmail.com"
   maintainerWeb       =       "https://github.com/CarlCzerny/Op-840"
   mutopiainstrument   =       "Piano"
+}
+
+\layout {
+  \context {
+    \Score
+    \override NonMusicalPaperColumn.line-break-permission = ##f
+    \override NonMusicalPaperColumn.page-break-permission = ##f
+  }
 }
 
 RH= \relative c'' {
@@ -138,15 +147,32 @@ LHII = \relative c {
   b16^( d f b f d \stemUp b8^.) \stemNeutral d8\rest d8\rest
   es16-5 g-3 b-2 es-1 b-2 g-3 es8-5 d8\rest d8\rest
   < f b d >4 < f b d >8 < f c' es >4 < f c' es>8
-  < b d >8 q q q d,8\rest_\markup "D.C. sino al fine."
+  < b d >8 q q q
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 3 . 0 )
+  d,8\rest_\markup "D.C. sino al fine."
 }
 
+Struktur= {
+  s8
+  s2.*3 \break
+  \grace { s32 s32 }  s2.*4 \break
+  s2.*4 \break
+  s2.*4 s2 s8 \break
+  s8 s2.*3 \break
+  s2.*4
+  \pageBreak
+  s2.*3 \break
+  s2.*3 \break
+}
+
+EtudeII=
 \score
 {
   \new PianoStaff \with {
     instrumentName = \markup {
       \center-column {
-        \line { \bold \huge { "№" } \number 2. }
+        \line { \bold \huge { "№" } \number  { \exercise "." } }
         \line \large { F Dur }
         \italic \line { Fa majeur. }
       }
@@ -154,33 +180,19 @@ LHII = \relative c {
     shortInstrumentName = ""
   }
   <<
-    \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
-    }
+    \new Staff="Discant" \RH
+    \new Staff="Bass"
+    <<
+      \new Voice = "first"
+      \relative c'
+      \LHI
+      \new Voice= "second"
+      \LHII
+      \new Voice \Struktur
+    >>
   >>
   \layout { }
-  \midi { }
+  % \midi { }
 }
-
+#'()
+\EtudeII
