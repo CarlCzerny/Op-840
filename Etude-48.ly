@@ -6,24 +6,20 @@
 \include "myScheme.ily"
 \paper {
 
-  left-margin = 15
-  right-margin = 15
-  page-count = #2
-  annotate-spacing = ##f
 }
 exercise ="48"
-#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
   mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
   piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
-  mutopiaopus         =       "840, No. 48"
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -123,7 +119,7 @@ RH= \relative c' {
   \override Beam.positions = #'(-2.5 . -2.5)
 
   \changePitch \nyPattern {
-   r < d-1 f-3 a-5 > r q r q r q
+    r < d-1 f-3 a-5 > r q r q r q
     r < e g a > r q r < d f a > r q
   }
   \revert Beam.positions
@@ -279,8 +275,6 @@ LH = \relative c {
       < d fis >8
     }
   >>
-
-
 }
 
 \score
@@ -300,30 +294,11 @@ LH = \relative c {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass" \LH
   >>
   \layout {
-    ragged-last-bottom = ##f
-    ragged-last = ##f
-    ragged-right = ##f
-    ragged-bottom = ##f
-    left-margin = #10
-    line-width = #190
+
   }
-  \midi { }
+  %\midi { }
 }
