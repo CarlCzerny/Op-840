@@ -12,17 +12,18 @@
   %min-systems-per-page = #5
   %page-count = #1
 }
-
+exercise ="6"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
-  title               =       "50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 6"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 6 }
-  mutopiaopus         =       "840, No. 6"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -35,6 +36,13 @@
   mutopiainstrument   =       "Piano"
 }
 
+\layout {
+  \context {
+    \Score
+    \override NonMusicalPaperColumn.line-break-permission = ##f
+    \override NonMusicalPaperColumn.page-break-permission = ##f
+  }
+}
 RH= \relative c'' {
   %\accidentalStyle modern
   \time 6/8
@@ -56,19 +64,22 @@ RH= \relative c'' {
   \slashedGrace f8-\markup { \dynamic p \italic dol. } e16-3 ( dis-2
   e8-1 a-3 c-5_>~ c a e )
   e( h' d_>~ d h e, )
-  e8-1 ( a-3 c~-5_> c a e ) \break
+  e8-1 ( a-3 c~-5_> c a e )
   gis-2 ( h4~ ) h8 e, e e-1 ( a16-2_\markup { \italic "cresc." } h c8~-4 c h-2 a-1 )
   \slashedGrace c8 b16-2 ( a b d-4 f8~ f e d )
   c4-2 ( e8-5 h!4 e8 a,4. r8 r)
   % \acciaccatura g8-3 f8 \ottava #0
-  \bar ":..:" \break
+  \bar ":..:"
   e8\p e(\< fis gis-3 a-1 h c)
   c4-3\sf\> ( h8 a ) r a\!
   a-5 ( a, ) a \grace { c16 d! } c8.-3 ( h16 a8 )
   < gis~ h^~ e~ >4. < gis h e >8 e' e
   e-1 ( a-2 c-4 \grace { c16 d } c8.-3 h16-2 a8-1 )
   \grace { f16-1 b-2 d-4 } f4.-5-.~ f8( e d ) c-2 ( e-5-. ) e-. h ( e-. ) e-.
-  a,4. r8 r8^\markup "Fine."
+  a,4. r8
+  \once \override TextScript.self-alignment-X = #RIGHT
+  \once \override TextScript.extra-offset = #'( 3 . 0 )
+  r8^\markup "Fine."
   % g-\markup { \dynamic p \italic dol. }
   % b(-2 c b a b d-4
   %\autoBeamOff f8-5-.) \autoBeamOn b16-3(_\markup { \italic \small "cresc." } c d c)
@@ -176,9 +187,25 @@ LHII = \relative c' {
   < d fis h >4 d8\rest < d fis h >4 d8\rest
   < e a cis >4 d8\rest < e gis d' >4 d8\rest
   < a'~ cis^~ >4. < a cis >8
+  \override TextScript.self-alignment-X = #RIGHT
   d,8\rest_\markup "D.C. sino al fine."
 }
 
+Struktur= {
+  %\grace s8
+  \slashedGrace { s8 }
+  s16 s16
+  s2.*5 \break
+  \slashedGrace { s8 } s2.*5 \break
+  s2.*4 \break
+  s2.*5 \break
+  s2.*4
+  \pageBreak
+  s2.*5 \break
+
+}
+
+EtudeVI=
 \score
 {
   \new PianoStaff \with {
@@ -186,7 +213,7 @@ LHII = \relative c' {
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 6.
+          \number { \exercise "." }
         }
         \line \large { A moll. }
         \italic \line { La mineur. }
@@ -197,33 +224,20 @@ LHII = \relative c' {
   <<
 
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-
-    }
-    \new Staff="Bass" {
-
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
-    }
+    \RH
+    \new Staff="Bass"
+    <<
+      \new Voice = "first"
+      \relative c'
+      \LHI
+      \new Voice= "second"
+      \LHII
+      \new Voice \Struktur
+    >>
   >>
   \layout { }
-  \midi { }
+  %\midi { }
 }
 
+#'()
+\EtudeVI
