@@ -6,11 +6,9 @@
 \include "myScheme.ily"
 \paper {
 
-  left-margin = 10
-  %annotate-spacing = ##t
 }
 exercise ="14"
-#(set-global-staff-size 20)
+%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -206,32 +204,11 @@ LH = \relative c' {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      %\override RehearsalMark.self-alignment-X = #RIGHT
-      \override TextScript.self-alignment-X = #RIGHT
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass" \LH
   >>
   \layout {
-    ragged-last-bottom = ##t
-    ragged-last = ##t
-    ragged-right = ##f
-    ragged-bottom = ##t
-    left-margin = #10
-    line-width = #190
+
   }
   %\midi { }
 }
