@@ -18,11 +18,11 @@ exercise ="15"
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
-  title               =       "" %"50 Melodische Übungsstücke"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
   mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 8 }
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
   mutopiaopus         =       "840, No. 15"
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
@@ -216,9 +216,13 @@ LH = \relative c' {
   \clef treble \stemNeutral
   < g b d e > q
   < a d f > q < a e' g > [ q ]
-  < d f >-._\markup "D.C. sino al fine." < f a >-. < d f >-.\noBeam r
+  < d f >-. < f a >-. < d f >-.\noBeam
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 3 . 0 )
+  r_\markup "D.C. sino al fine."
 }
 
+EtudeXV=
 \score
 {
   \new PianoStaff \with {
@@ -235,31 +239,10 @@ LH = \relative c' {
     shortInstrumentName = ""
   }
   <<
-
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-
-      >>
-
-    }
-    \new Staff="Bass" {
-
-      <<
-
-        \LH
-      >>
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
@@ -272,3 +255,5 @@ LH = \relative c' {
   %\midi { }
 }
 
+#'()
+\EtudeXV
