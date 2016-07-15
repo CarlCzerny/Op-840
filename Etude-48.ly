@@ -5,8 +5,9 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-
+  left-margin = #10
 }
+
 exercise ="48"
 
 \header {
@@ -32,6 +33,13 @@ exercise ="48"
   mutopiainstrument   =       "Piano"
 }
 
+\layout {
+  \context {
+    \Score
+    \override NonMusicalPaperColumn.line-break-permission = ##f
+    \override NonMusicalPaperColumn.page-break-permission = ##f
+  }
+}
 myPatternI = {
   c16 c-. [ c c-. c c-. c c-. ]
 }
@@ -39,6 +47,7 @@ myPatternII = {
   c16 c [ c c c c c c ]
 }
 nyPattern = { c16 c [ c c ] }
+
 myPatternIII = {
   c16 ( c c c c8-. ) c
 }
@@ -126,12 +135,12 @@ RH= \relative c' {
   \override Fingering.direction = #UP
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(2 2 2 2)  %% abhängig vom Takt
-  r16 < cis-1 e-2 a-\tweak extra-offset #'(-1.5 . 0)-5 >\> ( gis'-4 a-5 g-4 e g e )\!
+  r16
+  < cis-1 e-2 a-\tweak extra-offset #'(-1.5 . 0)-5 >\> ( gis'-4 a-5 g-4 e g e )\!
   \changePitch \myPatternIII {
     a-5 \p gis a f d r
     d'-5 cis d a f r
   }
-  \pageBreak
   es16-2-\markup { \italic "cresc." } g-1 b es g8 r
   \ottava #1
   g,16-1 b-2 es-4 g-1 b8-3 r
@@ -247,8 +256,11 @@ LH = \relative c {
       \repeat unfold 2 { fis,8 a d a }
       d, e gis e d e gis e
       a, fis' d fis a, g'! e g
-      s d_( a_\markup "D.C. sino al fine." fis d )
-      d'8\rest d4\rest
+      s d_( a fis d )
+      d'8\rest
+      \override TextScript.self-alignment-X = #RIGHT
+      \override TextScript.extra-offset = #'( 3 . 0 )
+      d4\rest_\markup "D.C. sino al fine."
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left) %% für Akkorde!
@@ -277,6 +289,19 @@ LH = \relative c {
   >>
 }
 
+Struktur= {
+  s1*3 \break
+  s1*3 \break
+  s1*3 \break
+  s1*3 \break
+  s1*3 \pageBreak
+  s1*3 \break
+  s1*3 \break
+  s1*3 \break
+  s1*3 \break
+  s1*3 \break
+}
+EtudeXXXXVIII=
 \score
 {
   \new PianoStaff \with {
@@ -295,10 +320,17 @@ LH = \relative c {
   <<
     \new Staff="Discant"
     \RH
-    \new Staff="Bass" \LH
+    \new Staff="Bass"
+    <<
+      \new Voice \LH
+      \new Voice \Struktur
+    >>
   >>
   \layout {
 
+    line-width = #190
   }
   %\midi { }
 }
+#'()
+\EtudeXXXXVIII
