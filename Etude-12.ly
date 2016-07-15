@@ -228,6 +228,7 @@ LH = \relative c {
   >>
 }
 
+EtudeXII=
 \score
 {
   \new PianoStaff \with {
@@ -245,22 +246,9 @@ LH = \relative c {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   \layout {
     ragged-last-bottom = ##t
@@ -270,5 +258,7 @@ LH = \relative c {
     left-margin = #10
     line-width = #190
   }
-  \midi { }
+  %\midi { }
 }
+#'()
+\EtudeXII
