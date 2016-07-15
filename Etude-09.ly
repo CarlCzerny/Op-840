@@ -3,17 +3,17 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+exercise ="9"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 9"
+  mutopiatitle        =       "50 Melodische Übungsstücke, No. " \exercise
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 9 }
-  mutopiaopus         =       "840, No. 9"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No. " \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -231,7 +231,7 @@ LH = \relative c' {
   es-. < g b >-. es-. < g c >-.
   f-. < b d >-. f-. < a c es >-.
   < b-4 d-2 > < d-2 f-1 > < b d >\noBeam r
-\key es \major
+  \key es \major
   <<
     {
       \voiceOne
@@ -285,12 +285,14 @@ LH = \relative c' {
       as es' c es
       g, es' b es
       b, as' f as
-      < es g >4. d8\rest
-      %d4\rest_\markup "D.C. sino al fine."
+      \override TextScript.self-alignment-X = #RIGHT
+      \override TextScript.extra-offset = #'( 3 . 0 )
+      < es g >4. d8\rest_\markup "D.C. sino al fine."
     }
   >>
 }
 
+EtudeIX=
 \score
 {
   \new PianoStaff \with {
@@ -298,7 +300,7 @@ LH = \relative c' {
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 9.
+          \number { \exercise "." }
         }
         \line \large { B Dur }
         \italic \line { Si \flat majeur. }
@@ -308,30 +310,16 @@ LH = \relative c' {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   \layout {
-    indent = #25
     ragged-last-bottom = ##t
-    ragged-last = ##t
+    %ragged-last = ##t
     ragged-right = ##f
-    ragged-bottom = ##t
-    line-width = #180
   }
-  \midi { }
+  %\midi { }
 }
+#'()
+\EtudeIX
