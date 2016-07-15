@@ -27,10 +27,7 @@ offsetPositions =
     \abs-fontsize #7 { \FootLeft }
   }
   annotate-spacing = ##f
-  %% system-system-spacing.extra-distance = #0
   left-margin = #15
-  %% system-system-spacing.basic-distance = #0
-  %page-count = #2
   top-margin = #20
   ragged-right = ##f
   bottom-margin = #10
@@ -47,27 +44,16 @@ offsetPositions =
   \context {
     \Staff
     \omit ClefModifier
-    %\override Clef.break-visibility = #'#(#f #t #t)
-    %\consists "Bar_number_engraver"
-    %\override BarNumber.padding = #0
-    % \override BarNumber.self-alignment-X = #CENTER
-    % \override BarNumber.break-visibility = #end-of-line-invisible
     \override Slur.outside-staff-priority = #150
     explicitClefVisibility = #end-of-line-invisible
     explicitKeySignatureVisibility = #end-of-line-invisible
-    \override Clef.full-size-change = ##t
   }
 
   \context {
     \Score
-    %\remove "Bar_number_engraver" % Taktnummerierung
-    %\override BarNumber.break-visibility = #'#(#f #f #f)
     \override BarNumber.break-visibility = #end-of-line-invisible
     \override BarNumber.padding = #0
-    %\override BarNumber.break-visibility = #end-of-line-invisible
     \override BarNumber.self-alignment-X = #CENTER
-    %% \override NonMusicalPaperColumn.line-break-permission = ##f
-    %% \override NonMusicalPaperColumn.page-break-permission = ##f
     \override RehearsalMark.self-alignment-X = #LEFT
     \override KeyCancellation.break-visibility = #'#(#f #t #t)
     \override TextScript.self-alignment-X = #LEFT
