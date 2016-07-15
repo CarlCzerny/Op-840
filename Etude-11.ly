@@ -10,7 +10,7 @@
   %annotate-spacing = ##t
 }
 exercise ="11"
-#(set-global-staff-size 20)
+%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -297,8 +297,11 @@ LH = \relative c' {
   g4.-3 ( as! g ) R4. g
   as g < f h > < es c' > d g as!
   < f as c d > < g d' f >
-  < c-5 es-2 >8 g-1_\markup "D.C. sino al fine." ( es-5 c-5 ) r
-  r
+  < c-5 es-2 >8 g-1 ( es-5 c-5 )
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 3 . 0 )
+  r r_\markup "D.C. sino al fine."
+
 }
 
 \score
@@ -318,30 +321,17 @@ LH = \relative c' {
   }
   <<
     \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \LH
-    }
+    \RH
+    \new Staff="Bass"
+    \LH
   >>
   \layout {
-    ragged-last-bottom = ##t
-    ragged-last = ##t
+    ragged-last-bottom = ##f
+    ragged-last = ##f
     ragged-right = ##f
-    ragged-bottom = ##t
-    left-margin = #10
-    line-width = #190
+    ragged-bottom = ##f
+    %  left-margin = #10
+    % line-width = #190
   }
   %\midi { }
 }
