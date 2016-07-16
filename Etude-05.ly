@@ -198,7 +198,6 @@ LHII = \relative c' {
   f,8-5-. ) f32-3^( g a g fis4-3_> )
 }
 
-EtudeV =
 \score
 {
   \new PianoStaff \with {
@@ -235,7 +234,5 @@ EtudeV =
     line-width = #190
   }
 
-  %\midi { }
+  \midi { }
 }
-#'()
-\EtudeV
