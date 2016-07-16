@@ -5,14 +5,8 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 exercise ="15"
-%% wenn erforderlich linken Abstand ändern
-\paper {
-  %% hier für den Fall, dass Änderungen erforderlich sind
-  %%l eft-margin = #15
-  %% top-margin = #20
-  %% system-system-spacing.basic-distance = #8
-  %min-systems-per-page = #6
 
+\paper {
 }
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -222,7 +216,6 @@ LH = \relative c' {
   r_\markup "D.C. sino al fine."
 }
 
-EtudeXV=
 \score
 {
   \new PianoStaff \with {
@@ -252,8 +245,5 @@ EtudeXV=
     %ragged-bottom = ##f
     %line-width = #180
   }
-  %\midi { }
+  \midi { }
 }
-
-#'()
-\EtudeXV
