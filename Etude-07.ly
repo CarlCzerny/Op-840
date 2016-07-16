@@ -3,15 +3,7 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-%% wenn erforderlich linken Abstand ändern
-\paper {
-  %% hier für den Fall, dass Änderungen erforderlich sind
-  %left-margin = #15
-  %top-margin = #20
-  %system-system-spacing.basic-distance = #8
-  %min-systems-per-page = #6
-}
-%#(set-global-staff-size 21)
+
 exercise ="7"
 
 \header {
@@ -282,7 +274,6 @@ LH = \relative c' {
   >>
 }
 
-EtudeVII=
 \score
 {
   \new PianoStaff \with {
@@ -305,7 +296,5 @@ EtudeVII=
     \LH
   >>
   \layout { }
-  % \midi { }
+  \midi { }
 }
-#'()
-\EtudeVII
