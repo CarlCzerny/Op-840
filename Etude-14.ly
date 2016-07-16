@@ -5,10 +5,8 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-
 }
 exercise ="14"
-%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -210,5 +208,5 @@ LH = \relative c' {
   \layout {
 
   }
-  %\midi { }
+  \midi { }
 }
