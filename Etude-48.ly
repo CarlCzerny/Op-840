@@ -330,7 +330,5 @@ EtudeXXXXVIII=
 
     line-width = #190
   }
-  %\midi { }
+ \midi { }
 }
-#'()
-\EtudeXXXXVIII
