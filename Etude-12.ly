@@ -5,9 +5,7 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-
   left-margin = 10
-  %annotate-spacing = ##t
 }
 exercise ="12"
 #(set-global-staff-size 20)
@@ -258,7 +256,5 @@ EtudeXII=
     left-margin = #10
     line-width = #190
   }
-  %\midi { }
+  \midi { }
 }
-#'()
-\EtudeXII
