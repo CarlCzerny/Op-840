@@ -5,9 +5,7 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-
   left-margin = 10
-  %annotate-spacing = ##t
 }
 exercise ="11"
 %#(set-global-staff-size 20)
@@ -330,8 +328,6 @@ LH = \relative c' {
     ragged-last = ##f
     ragged-right = ##f
     ragged-bottom = ##f
-    %  left-margin = #10
-    % line-width = #190
-  }
-  %\midi { }
+   }
+  \midi { }
 }
