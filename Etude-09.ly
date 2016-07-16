@@ -319,7 +319,5 @@ EtudeIX=
     %ragged-last = ##t
     ragged-right = ##f
   }
-  %\midi { }
+ %\midi { }
 }
-#'()
-\EtudeIX
