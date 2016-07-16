@@ -3,15 +3,7 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-%% wenn erforderlich linken Abstand ändern
-\paper {
-  %% hier für den Fall, dass Änderungen erforderlich sind
-  %left-margin = #5
-  %top-margin = #20
-  %system-system-spacing.basic-distance = #8
-  %min-systems-per-page = #5
-  %page-count = #1
-}
+
 exercise ="6"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -205,7 +197,6 @@ Struktur= {
 
 }
 
-EtudeVI=
 \score
 {
   \new PianoStaff \with {
@@ -236,8 +227,5 @@ EtudeVI=
     >>
   >>
   \layout { }
-  %\midi { }
+  \midi { }
 }
-
-#'()
-\EtudeVI
