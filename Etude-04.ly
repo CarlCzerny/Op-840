@@ -1,11 +1,9 @@
 \version "2.19.37"
 
 \language "deutsch"
-%% Noten fertig, es fehlt Dynamic!
 
 \include "Papier+Layout.ly"
-%\include "letter.ly"
-#(set-global-staff-size 21)
+
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
