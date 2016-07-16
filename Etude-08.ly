@@ -139,7 +139,6 @@ LH = \relative c {
   >>
 }
 
-EtudeVIII=
 \score
 {
   \new PianoStaff \with {
@@ -162,9 +161,5 @@ EtudeVIII=
     \LH
   >>
   \layout { }
-  %\midi { }
+  \midi { }
 }
-
-#'()
-
-\EtudeVIII
