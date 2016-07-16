@@ -166,7 +166,6 @@ Struktur= {
   s2.*3 \break
 }
 
-EtudeII=
 \score
 {
   \new PianoStaff \with {
@@ -192,7 +191,5 @@ EtudeII=
     >>
   >>
   \layout { }
-  % \midi { }
+  \midi { }
 }
-#'()
-\EtudeII
