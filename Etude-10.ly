@@ -34,7 +34,6 @@ exercise ="10"
 RH= \relative c' {
   \time 4/4
   \key g \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(4 )  %% abhängig vom Takt
@@ -100,7 +99,6 @@ RH= \relative c' {
 LH = \relative c {
   \clef bass
   \key g \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
@@ -298,7 +296,6 @@ LH = \relative c {
   >>
 }
 
-EtudeX=
 \score
 {
   \new PianoStaff \with {
@@ -326,5 +323,3 @@ EtudeX=
   }
   %\midi { }
 }
-#'()
-\EtudeX
