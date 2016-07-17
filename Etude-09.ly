@@ -3,17 +3,18 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-exercise ="9"
+exercise ="10"
+
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. " \exercise
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
   piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
-  mutopiaopus         =       "840, No. " \exercise
+  mutopiaopus         =       "840, No. 10"
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -31,8 +32,8 @@ exercise ="9"
 }
 
 RH= \relative c' {
-  \time 2/4
-  \key b \major
+  \time 4/4
+  \key g \major
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(4 )  %% abhängig vom Takt
@@ -45,92 +46,59 @@ RH= \relative c' {
   \mark \markup "Allegro viavce"
 
   \once \override Slur.positions = #'(2 . -2)
-  \grace { f32-1 ( b-2 } d8-4-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { b32-1 ( d-2 } f8-5-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { d32-1 ( f-2 } b8-5-. ) r
-  \grace { f32-1 ( b-2 } d8-5-. ) r
-  \slashedGrace f,32 d'8-5 ( c-4-. )
-  \slashedGrace f,32\noBeam c'8-5 ( b-4-. )
-  \grace { b32 c } b8-5 ( a-2-. ) g-1-. f-2-.
-  \once \override Slur.positions = #'(2 . -2)
-  \grace { f,32-1 ( b-2 } d8-4-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { b32-1 ( d-2 } f8-5-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { d32-1 ( f-2 } b8-5-. ) r
-  \grace { f32-1 ( b-2 } d8-5-. ) r
-  \acciaccatura g,8 c-3-. es-5-.
-  \acciaccatura f,8\noBeam a-2-. c-4-. b r8 r4
-  \bar ":..:"
-  \set Staff.beatStructure = #'(2 2 )
-  a16-3 \p ( b a g a8-. ) f-1-.
-  b16-2 ( c b a b8-2-. ) d-1-.
-  \ottava #1
-  f16-3 ( g f e f8-. ) c-1-.
-  es!-3 ( d ) c-1-. b-2-.
-  e16-3 ( f e d e8-._\markup \italic "cresc." ) c-.
-  f16-3 ( g f es f8-1-. ) c'-3-.
-  c-5 ( b ) g-. e-.
-  f-2  \ottava #0 f,-5 [ ( es!-4 c-2 ) ]
-  \once \override Slur.positions = #'(2 . -2)
-  \grace { f,32-1 ( b-2 } d8-4-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { b32-1 ( d-2 } f8-5-. ) r
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { d32-1 ( f-2 } b8-5-. ) r
-  \grace { f32-1 ( b-2 } d8-5-. ) r
-  \slashedGrace f,32 d'8-5 ( c-4-. )
-  \slashedGrace f,32\noBeam c'8-5 ( b-4-. )
-  \grace { b32 c } b8-5 ( a-2-. ) g-1-. f-2-.
-  \ottava #1
-  \once \override Slur.positions = #'(2 . 0)
-  \grace { b32-1 ( d-2 } f8-5-. ) r
-  \acciaccatura f-1 b-4-. r
-  \acciaccatura es,-3 g-5-. r
-  \acciaccatura c,-1 es-3-. r
-  \ottava #0
-  \acciaccatura b-2 d-4-. f-5-.
-  \acciaccatura a, es'-4-. c-1-.
-  b-2 r r4^\markup "Fine."
-  %\offsetPositions #'(1 . 0)
-  \bar ":..:"  \pageBreak
-  \key es \major
-  g,16-1_\markup { \dynamic p \italic "dol." } ( b-3 es-4 b-2 g'4-5
-  f,16 b es b g'4 )
-  f,16 ( b d-4 f-1 b d f b,-4
-  es4-5 b8-2-. ) r
-  g,16 ( b es b g'4
-  f,16 b es b g'4 )
-  a,16 ( c es-3 f-1 a c es-4 a,
-  b8-. ) b-. b-.\noBeam r
-  \bar ":..:"
-  b16-4 \p ( as! f d b-4 as f d b_2 d_1 f as b-4 d-1 f-3 d-1 )
-
-  es-2 ( f es d es8-. ) g-4-.
-  f4-1 ( b8-4-. ) r
-  b16 \f ( as f d b as f d-1
-  f as b-4 d-1 f as b-4 d-1
-  f-4 es d es g-5 es b f
-  f2-2 )
-  g,16 \p ( b es b g'4 g,16 b es b g'4 )
-  f,16 ( b d-4 f-1 b d f b,-4
-  es4-5 b8-2-. ) r
-  c,16_\markup \italic "cresc." ( es as es c'4
-  b,16-1 es-2 g-4 es-2 b'4-5 )
-  d,,16 \f ( f as b-4 d-1 f as d,
-  es8-. ) es-. es-. r
-  \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
-
+  r16 e-1 ( fis g-3 a-1 h cis dis e4-5 h8-. ) r
+  r16 g-2 ( a-1 h cis dis-4 e-1 fis g4-3 e8-. ) r
+  r16 h ( cis dis e-1 gis g a h8-. ) < g h >-. < fis a >-. < e g >-.
+  < dis-2 fis-3 >-. < e-1 g-4 >-. < dis fis >-. < e g >-. < dis fis >-.
+  h [ ( \p dis fis ) ]
+  a8-5-.\noBeam a16-4 ( g fis4-> ) c'8-5-.\noBeam c16-4 ( h a4-> )
+  g8-1-.\noBeam g16-3 ( a h4-> ) fis8-2-.\noBeam fis16-2 ( g a4-> )
+  g8-. e-. g-. e-. h'-. h,-. cis-. dis-.
+  e8-. h-. g'-. h,-. e-. r r4
+  < d! g h >2 r8 q q q
+  < fis -2 a-4 >16 ( d e fis g-1 a h cis d8-. ) a-. fis-. dis-.
+  < h e g >2 r8 q q q
+  < dis-2 fis-4 >16 ( h cis dis e-1 fis gis ais h8-5-.\> ) h-3-. h-. h-.\!
+  c!-4-. \p c16 ( h a4-2_> ) a8-4-. a16-4 ( g fis4_> )
+  g8-3-. g16-1 ( h-2 e4.-5_> ) ( d!16-4 c h a-1 g-3 fis )
+  h8-. h-. g-. e-2-. h-. h-. cis-. dis-.
+  e-. h-. g'-. h,-. e-. r r4-\markup "Fine." \bar ":..:"
+  \key e \major
+  \mark \markup \fontsize #-1.5 { \bold "E Dur." \italic "(Mi majeur.)" }
+  gis4-3-\markup { \dynamic p \italic "dol.c" } ( gis h4.-5_> a16 gis )
+  fis8.-2 ( gis16 fis8. fis16 fis2 )
+  fis4-2 fis ( a4.-4_> gis16 fis
+  e8.-1 fis16 e8. fis16 e2 )
+  cis'4-2 ( cis e4.-4_> dis16 cis
+  h4-1 gis'8.-3 fis16 e8.-1 dis16-4 cis8. h16 )
+  a8.-1 ( h16 a8.-3 h16 gis8. h16 gis8. h16-5 )
+  fis2-2 r
+  \omit TupletNumber
+  \override TupletBracket.bracket-visibility = ##f
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Staff.beatStructure = #'(1 1 1 1 )
+  \tuplet 3/2
+  {
+    h8-5 ( a-4 fis-3 ) dis-2-. dis-2-. dis-2-.
+    h'8 ( a fis ) dis-. dis-. dis-.
+    e-1 ( gis h gis-2 h e
+  } h4.._> gis16 )
+  \tuplet 3/2
+  {
+    h8 ( a fis ) dis-. dis-. dis-.
+    h'8 ( a fis ) dis-. dis-. dis-.
+    e ( gis h gis h e
+  }  h2-3_> )
+  h4-1 h gis'-3_> ( fis8. e16
+  dis8.-4 cis16 h8. a16-1 gis8.-3 fis16-2 a8.-4 cis16-5 )
+  h8.-4 ( gis16 e8.-1 ) e16-3 ( dis8. a'16 fis8. dis16
+  e2 ) r2
   \bar ":..:"
 }
 
-LH = \relative c' {
+LH = \relative c {
   \clef bass
-  \mergeDifferentlyHeadedOn
-  \mergeDifferentlyDottedOn
-  \key b \major
+  \key g \major
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
@@ -140,15 +108,16 @@ LH = \relative c' {
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(2 2 )  %% abhängig vom Takt
-
-  \grace { s32 s32 }
-  b8-._\markup { \italic "stacc." } < d f >-. b-. q-.
-  b-. q-. b-. q-.
-  a-. < es' f >-. b-. < d f >-.
-
+  < e g h >2 r8 q q q
+  < e g h >2 r8 q q q
+  < e g h >2 r8 e'-1-. dis-. e-.
+  h-3-. ais-. h-. ais-. b-. r r4
+  \clef treble
   <<
     {
       \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -158,7 +127,9 @@ LH = \relative c' {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      f,8 < c' es > q q
+      dis8 < fis a h > q q dis < fis a c > q q
+      e < g h > q q a, < c fis > q q
+      h < e g > q q h < fis a > q q
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -170,64 +141,20 @@ LH = \relative c' {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/8)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      f,2
+      dis'2 dis e a, h h
     }
   >>
-  b8-. < d f >-. b-. q-.
-  b8-. < d f >-. b-. q-.
-  es,-. < g c >-. f-. < c' es >-.
-  < b-4 d-2 >-. < d-2 f-1 >-. < b d >-.\noBeam r
-  <<
-    {
-      \voiceOne
-      \set fingeringOrientations = #'(left)   %% Akkorde
-      \override Fingering.direction = #UP %% Einzelnoten
-      \override Fingering.padding = #0.2
-      \override Fingering.staff-padding = #'()
-      \override Fingering.avoid-slur = #'inside
-      \override Slur.direction = #UP
-      \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
-      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      f8 < c' es > q q
-      f, < b d > q q
-      f < a c > q q
-      \clef treble
-      b < d f > q q
-      c < g' b > q q
-      c, < f a > q q
-      c < es g > c < g' b >
-      < f a > b8\rest b4\rest
-
-    } \\ {
-      \voiceTwo
-      \set fingeringOrientations = #'(left)   %% Akkorde
-      \override Fingering.direction = #DOWN %% Einzelnoten
-      \override Fingering.padding = #0.2
-      \override Fingering.staff-padding = #'()
-      \override Fingering.avoid-slur = #'inside
-      \override Slur.direction = #DOWN
-      \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
-      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      f,2 f f
-      b c c c4 c4
-      %d4\rest_\markup "D.C. sino al fine."
-    }
-  >>
+  < e g >4 q < e g >8 r r4
   \clef bass
-  b8-. < d f >-. b-. q-.
-  b8-. < d f >-. b-. q-.
-  es,-. < g c >-. e q
-  f-. < a c >-. es!-. q
-  d-. < f b >-. d-. q-.
-  es-. < g b >-. es-. < g c >-.
-  f-. < b d >-. f-. < a c es >-.
-  < b-4 d-2 > < d-2 f-1 > < b d >\noBeam r
-  \key es \major
+  r16 g,,-5 ( a h c d-1 e-3 fis-2 ) g4-1 ( h-2
+  d ) d, r2
+  r16 e,-5 ( fis g a h-1 cis-3 dis ) e4-1 ( g-2
+  h ) h, r2
   <<
     {
       \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -235,50 +162,136 @@ LH = \relative c' {
       \override Fingering.avoid-slur = #'inside
       \override Slur.direction = #UP
       \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      es,2 es b es es es f
-      s
+      dis2 dis e a, h h s1
 
-      b, b s b b b b s es es b es as^4 g^5
-      b,
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
-      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.direction = #DOWN %% Einzelnoten
       \override Fingering.padding = #0.2
       \override Fingering.staff-padding = #'()
       \override Fingering.avoid-slur = #'inside
       \override Slur.direction = #DOWN
       \set Timing.beamExceptions = #'()
-      \set Timing.baseMoment = #(ly:make-moment 1/8)
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      dis8 < fis a c > q q
+      dis < fis a h > q q
+      e < g h > q q
+      a, < c fis > q q
+      h < e g > q q
+      h < fis' a > q q
+      < e g >4 q < e g >8 d8\rest d4\rest
+    }
+  >>
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
       \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
-      es8-4 b'-1 g-2 b-1
-      es,8 b' g b
-      b, as' f as
-      es b' g b
-      es, b' g b
-      es, b' g b
-      f es' c es
-      < b d >4. d,8\rest
-      b8 as'! f as
-      b, as' f as
-      g-2^( b-1 g-2 es-3 )
-      b f' d f
-      b, f' d f
-      b, f' d f
-      b, g' es g
-      < b,^5 d^3 > b'-1 as-2 f-3
-      es b' g b
-      es, b' g b
-      b, as' f as
-      es b' g b
-      as es' c es
-      g, es' b es
-      b, as' f as
+
+      \key e \major
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      \set Staff.beatStructure = #'(1 1 1 1 )
+      \clef treble
+      \tuplet 3/2  { e'8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
+      \tuplet 3/2  { dis,-5 a' h dis, a' h dis, a' h dis, a' h }
+      \tuplet 3/2 { h, dis a' h, dis a' h, dis a' h, dis a' }
+      \tuplet 3/2  { e8_4 gis_2 h_1 e, gis h  e, gis h  e, gis h }
+      \clef bass
+      a,4 a a a
+      gis gis gis gis
+      dis dis e e
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      e'4 e e e
+      dis dis dis dis
+      h h h h
+      e e e e
+      \tuplet 3/2 {
+        a,8 cis e a, cis e a, cis e a, cis e
+        gis, h e gis, h e gis, h e gis, h e
+        dis, fis h dis, fis h e, gis h e, gis h
+        h, dis fis h fis dis
+      }
+      \stemUp h d8\rest d4\rest
+    }
+  >>
+  \clef treble
+  \omit TupletNumber
+  \override TupletBracket.bracket-visibility = ##f
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+  < h' fis' a >8[ r q] r q [ r q ] r
+  < h e gis >8[ r q] r q [ r q ] r
+  < h fis' a >8[ r q] r q [ r q ] r
+  < e gis >4 q q q
+  <<
+    {
+      \voiceOne
+      \mergeDifferentlyHeadedOn
+      \mergeDifferentlyDottedOn
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #UP %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #UP
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(4 4 )  %% abhängig vom Takt
+      \omit TupletNumber
+      \override TupletBracket.bracket-visibility = ##f
+      \set Staff.beatStructure = #'(1 1 1 1 )
+      \tuplet 3/2  {
+        gis,8 h e gis, h e gis, h e gis, h e
+        a, cis fis a, cis fis a, cis fis a, cis fis
+        h, e gis h, e gis h, fis' a h, fis' a
+        e gis h e, gis h
+      }
+
+    } \\ {
+      \voiceTwo
+      \set fingeringOrientations = #'(left)   %% Akkorde
+      \override Fingering.direction = #DOWN %% Einzelnoten
+      \override Fingering.padding = #0.2
+      \override Fingering.staff-padding = #'()
+      \override Fingering.avoid-slur = #'inside
+      \override Slur.direction = #DOWN
+      \set Timing.beamExceptions = #'()
+      \set Timing.baseMoment = #(ly:make-moment 1/4)
+      \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+      gis,4 gis gis gis
+      a a a a
+      h h h h
+      e e
+      \stemUp e
       \override TextScript.self-alignment-X = #RIGHT
       \override TextScript.extra-offset = #'( 3 . 0 )
-      < es g >4. d8\rest_\markup "D.C. sino al fine."
+      h'4\rest_\markup "D.C. sino al fine."
     }
   >>
 }
@@ -292,8 +305,8 @@ LH = \relative c' {
           \bold \huge { "№" }
           \number { \exercise "." }
         }
-        \line \large { B Dur }
-        \italic \line { Si \flat majeur. }
+        \line \large { E Moll }
+        \italic \line { Mi mineur. }
       }
     }
     shortInstrumentName = ""
@@ -306,7 +319,6 @@ LH = \relative c' {
   >>
   \layout {
     ragged-last-bottom = ##t
-    %ragged-last = ##t
     ragged-right = ##f
   }
   \midi { }
