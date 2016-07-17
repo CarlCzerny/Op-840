@@ -6,9 +6,9 @@
 \include "myScheme.ily"
 \paper {
   left-margin = 10
+
 }
 exercise ="12"
-#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -100,7 +100,7 @@ RH= \relative c' {
   r4^\markup "Fine."
   \bar ":..:"
   \key c \major
-  \mark \markup { \bold "C Dur." \italic "(Ut" \italic " majeur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "C Dur." \italic "(Ut majeur.)" }
   e''4-5 e8. ( d16 c8. h16 c8.-3 a16-1
   g4-2 ) g8. ( c16 e2-1 )
   d,4-2 ( e-1 \slashedGrace g8 f8.[ e16] f8. g16
@@ -204,7 +204,10 @@ LH = \relative c {
       f < a c > q q fis < c' d> q q
       g < c e > q q g < d' f > q q
       \stemDown
-      < c e >4_\markup "D.C. sino al fine." q q  d,4\rest
+      < c e >4 q q
+      \override TextScript.self-alignment-X = #RIGHT
+      \override TextScript.extra-offset = #'( 3 . 0 )
+      d,4\rest_\markup "D.C. sino al fine."
     } \\ {
       \voiceTwo
       \set fingeringOrientations = #'(left)   %% Akkorde
@@ -226,7 +229,6 @@ LH = \relative c {
   >>
 }
 
-EtudeXII=
 \score
 {
   \new PianoStaff \with {
