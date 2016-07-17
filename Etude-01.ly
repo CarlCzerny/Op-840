@@ -3,17 +3,18 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+exercise ="1"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 1"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 1 }
-  mutopiaopus         =       "840, No. 1"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -29,7 +30,7 @@
 RH= \relative c'' {
   \partial 4 \accidentalStyle modern
   \override Flag.stroke-style = ##f
-  \mark \markup "Allegro giocoso"
+  \mark \markup "Allegro giocoso."
   \once \override TextScript.extra-offset = #'( -15 . 5 )
   \slashedGrace a'8\p %-\markup { \small \bold o }
   g8.(-3 fis16
@@ -68,7 +69,7 @@ RH= \relative c'' {
   < g e' >8-. < f d' >-. <  e c' >-. < d h' >-.
   <  e c' >-. r r4 r4^\markup "Fine." \bar ":..:"
   \key c \minor
-  \mark \markup { \bold "C Moll." \italic "(Ut mineur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "C Moll." \italic "(Ut mineur.)" }
   \once \override Voice.Slur #'positions = #'(2.2 . 0)
   g,4-1(_\markup { \dynamic p \italic "dol." }
   es'-3) es( d c)
@@ -95,7 +96,6 @@ LH = \relative c' {
   \slashedGrace s8 r4
   \clef treble
   \set fingeringOrientations = #'(left)
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   < c-1 e-2 g-4 >8 r < c e g >8 r < g h f' > r < g h f' > r
   < c-3 e-1 >8 r q r q r q r
   < h f' g >8 r q r q r q r
@@ -169,7 +169,7 @@ LH = \relative c' {
       \center-column {
         %\once \override TextScript.extra-offset = #'( 0 . 0.5)
         %\draw-circle #0.5 #0.3 ##f
-        \line { \bold \huge { "№" } \number 1. }
+        \line { \bold \huge { "№" } \number { \exercise "." } }
         \line \large { C Dur }
         \italic \line { Ut majeur. }
       }
@@ -177,26 +177,8 @@ LH = \relative c' {
     shortInstrumentName = ""
   }
   <<
-
-    \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-      \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-      \LH
-    }
+    \new Staff="Discant" \RH
+    \new Staff="Bass" \LH
   >>
   \layout { }
   \midi { }
