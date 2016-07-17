@@ -5,8 +5,10 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
+
 }
 exercise ="14"
+%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -34,11 +36,9 @@ myPatternI = {
   c8 ( c-. ) c-.
 }
 
-
 RH= \relative c'' {
   \time 6/8
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(3 3 )  %% abhängig vom Takt
@@ -119,7 +119,6 @@ RH= \relative c'' {
 
 LH = \relative c' {
   \clef bass
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(down) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.4
