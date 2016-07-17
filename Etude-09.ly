@@ -27,16 +27,12 @@ exercise ="9"
 }
 
 \paper {
-  left-margin = #10
-  system-system-spacing.basic-distance = #8
-  min-systems-per-page = #6
-  top-margin = #10
+
 }
 
 RH= \relative c' {
   \time 2/4
   \key b \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(4 )  %% abhängig vom Takt
@@ -132,8 +128,9 @@ RH= \relative c' {
 
 LH = \relative c' {
   \clef bass
+  \mergeDifferentlyHeadedOn
+  \mergeDifferentlyDottedOn
   \key b \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
@@ -152,8 +149,6 @@ LH = \relative c' {
   <<
     {
       \voiceOne
-      \mergeDifferentlyHeadedOn
-      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -185,8 +180,6 @@ LH = \relative c' {
   <<
     {
       \voiceOne
-      \mergeDifferentlyHeadedOn
-      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -235,8 +228,6 @@ LH = \relative c' {
   <<
     {
       \voiceOne
-      \mergeDifferentlyHeadedOn
-      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -292,7 +283,6 @@ LH = \relative c' {
   >>
 }
 
-EtudeIX=
 \score
 {
   \new PianoStaff \with {
@@ -319,5 +309,5 @@ EtudeIX=
     %ragged-last = ##t
     ragged-right = ##f
   }
- %\midi { }
+  \midi { }
 }
