@@ -64,7 +64,7 @@ RH= \relative c' {
   h8-. h-. g-. e-2-. h-. h-. cis-. dis-.
   e-. h-. g'-. h,-. e-. r r4-\markup "Fine." \bar ":..:"
   \key e \major
-  \mark \markup { \bold "E Dur." \italic "(Mi" \italic " majeur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "E Dur." \italic "(Mi majeur.)" }
   gis4-3-\markup { \dynamic p \italic "dol.c" } ( gis h4.-5_> a16 gis )
   fis8.-2 ( gis16 fis8. fis16 fis2 )
   fis4-2 fis ( a4.-4_> gis16 fis
@@ -321,5 +321,5 @@ LH = \relative c {
     ragged-last-bottom = ##t
     ragged-right = ##f
   }
-  %\midi { }
+  \midi { }
 }
