@@ -3,7 +3,9 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+%% wenn erforderlich linken Abstand ändern
+\paper {
+}
 exercise ="6"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -39,8 +41,6 @@ RH= \relative c'' {
   %\accidentalStyle modern
   \time 6/8
   \key c \major \partial 8
-  %\set Staff.explicitKeySignatureVisibility = #all-invisible
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(3 3 ) % abhängig vom Takt
@@ -75,7 +75,7 @@ RH= \relative c'' {
   % g-\markup { \dynamic p \italic dol. }
   % b(-2 c b a b d-4
   %\autoBeamOff f8-5-.) \autoBeamOn b16-3(_\markup { \italic \small "cresc." } c d c)
-  \mark \markup { \bold "A Dur." \italic "(La majeur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "A Dur." \italic "(La majeur.)" }
   \bar ":..:"
   \key a \major
   e8-\markup { \dynamic p \italic dol. }
@@ -113,8 +113,7 @@ LHI = \relative c' {
   \voiceOne
   \mergeDifferentlyHeadedOn
   \mergeDifferentlyDottedOn
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
-  \set fingeringOrientations = #'(left) %% für Akkorde!
+   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.8
   \override Fingering.staff-padding = #'()
