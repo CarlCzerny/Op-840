@@ -73,14 +73,13 @@ RH= \relative c''' {
   d'16-4 ( c b c-1 d es f-1 g as b-4 c-1 d-2
   es4-4\> b8-2 g4-1 es8-2 )
   \grace { es'32[ \p f] } c8-3 ( h c es4-5 c8-3 )
-  b!8-2-.\noBeam_\markup { \italic \small "cresc." }
+  b!8-2-.\noBeam_\markup { \italic "cresc." }
   \ottava #1 es'16-3 d f es d c-1 b-4 as g f
   c'-5 \f b as g f-1 es-3
   \ottava #0 d c b-4 as g f
   es-2 ( g-1 b-2 es-4 b g es8 ) r^\markup { "Fine." }
   \bar ":..:"
-  \mark \markup { \bold "Es Moll." \italic "(Mi" \super \flat \italic " mineur)" }
-  %% für Akkorde!
+  \mark \markup \fontsize #-1.5 { \bold "Es Moll." \italic "(Mi" \flat \italic " mineur)" }
   \key ges \major
   <<
     \set fingeringOrientations = #'(left)
@@ -238,6 +237,6 @@ Struktur= {
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
-   }
+  }
   \midi { }
 }
