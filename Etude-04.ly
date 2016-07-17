@@ -3,17 +3,18 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+exercise ="4"
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 1"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 4 }
-  mutopiaopus         =       "840, No. 4"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -25,13 +26,10 @@
   maintainerWeb       =       "https://github.com/CarlCzerny/Op-840"
   mutopiainstrument   =       "Piano"
 }
-
 RH= \relative c'' {
   %\accidentalStyle modern
   \time 3/4
   \key b \major \partial 4
-  %\set Staff.explicitKeySignatureVisibility = #all-invisible
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(2 1 ) % abhängig vom Takt
@@ -70,7 +68,7 @@ RH= \relative c'' {
   g-3-. d-. b'-. g r4^\markup { "Fine." } \bar ":..:"
   %% Teil 2 G dur.
   \key g \major
-  \mark \markup { \bold "G Dur." \italic "(Sol majeur)" }
+  \mark \markup \fontsize #-1.5 { \bold "G Dur." \italic "(Sol majeur)" }
   \once \override Voice.Slur #'positions = #'(2 . 0)
   d4-\markup { \dynamic p \italic dol. } d( g h)-.
   %\override Voice.Fingering.padding = #1
@@ -150,7 +148,10 @@ LHII = \relative c' {
   d4\rest d2. d d d d d d4 d' d
   d-1^( c-2 a-4 ) < g h > q q q q q
   < c, e g > q q q q q
-  d2. d < g-4 h-2 >4^( d' h g ) d'4\rest
+  d2. d < g-4 h-2 >4^( d' h g )
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 5 . 0 )
+  d4\rest_\markup "D.C. sino al fine."
 }
 
 \score
@@ -160,7 +161,7 @@ LHII = \relative c' {
       \center-column {
         \line {
           \bold \huge { "№" }
-          \number 4.
+          \number { \exercise "." }
         }
         \line \large { G Moll. }
         \italic \line { Sol mineur. }
@@ -169,32 +170,15 @@ LHII = \relative c' {
     shortInstrumentName = ""
   }
   <<
-    \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-      \override BarNumber.outside-staff-priority = #10
-      \override Slur.outside-staff-priority = #150
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
-    }
-    \new Staff="Bass" {
-
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
-    }
+    \new Staff="Discant" \RH
+    \new Staff="Bass"
+    <<
+      \new Voice = "first"
+      \relative c'
+      \LHI
+      \new Voice= "second"
+      \LHII
+    >>
   >>
   \layout { }
   \midi { }
