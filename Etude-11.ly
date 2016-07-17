@@ -5,10 +5,8 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 \paper {
-  left-margin = 10
 }
 exercise ="11"
-%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -49,7 +47,6 @@ myPatternIV = { c16 ( c c c c8-.\noBeam ) }
 RH= \relative c'' {
   \time 3/8
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(4 )  %% abhängig vom Takt
@@ -124,7 +121,7 @@ RH= \relative c'' {
   c8-. g'-. e-. c-. r r^\markup "Fine."
   \bar ":..:"
   \key es \major
-  \mark \markup { \bold "C Moll." \italic "(Ut" \italic " mineur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "C Moll." \italic "(Ut mineur.)" }
   < g c es >4._\markup { \dynamic p \italic "legato" }
   ( < f h d > < es c' > < f as d > < d g h >
   < es g c > < g h d >
@@ -144,10 +141,9 @@ RH= \relative c'' {
 LH = \relative c' {
   \clef bass
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
-  \override Fingering.padding = #0.2
+  \override Fingering.padding = #0.4
   \override Fingering.staff-padding = #'()
   \override Fingering.avoid-slur = #'inside
   %\override Slur.direction = #UP
@@ -299,7 +295,6 @@ LH = \relative c' {
   \override TextScript.self-alignment-X = #RIGHT
   \override TextScript.extra-offset = #'( 3 . 0 )
   r r_\markup "D.C. sino al fine."
-
 }
 
 \score
@@ -328,6 +323,6 @@ LH = \relative c' {
     ragged-last = ##f
     ragged-right = ##f
     ragged-bottom = ##f
-   }
+  }
   \midi { }
 }
