@@ -5,7 +5,9 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 exercise ="16"
-
+%% wenn erforderlich linken Abstand ändern
+\paper {
+}
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
@@ -36,7 +38,6 @@ myPattern = {
 RH= \relative c'' {
   \time 6/8
   \key b \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(3 3 )  %% abhängig vom Takt
@@ -83,7 +84,7 @@ RH= \relative c'' {
   d r g, ( b4 a8 g ) r r r4^\markup { "Fine." }
   %\once \override Slur.positions = #'(2.8 . 0.6)
   \bar ":..:"
-  \mark \markup { \bold "G Dur." \italic "(Sol" \super \flat \italic " majeur)" }
+  \mark \markup \fontsize #-1.5 { \bold "G Dur." \italic "(Sol majeur)" }
   \bar ":..:" \break
   \key g \major
   d8-1 \p r < g-1 h-3 > ( < a c > < h-3 d-5 >-. ) q-. q-.
@@ -118,7 +119,6 @@ RH= \relative c'' {
 LH = \relative c' {
   \clef bass
   \key b \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
@@ -209,6 +209,7 @@ LH = \relative c' {
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
+
   }
   \midi { }
 }
