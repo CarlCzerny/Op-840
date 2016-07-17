@@ -2,17 +2,19 @@
 
 \language "deutsch"
 \include "Papier+Layout.ly"
+exercise="3"
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  mutopiatitle        =       "50 Melodische Übungsstücke, No. 3"
+  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+  mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
-  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny 3 }
-  mutopiaopus         =       "840, No. 3"
+  piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
+  mutopiaopus         =       "840, No." \exercise
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -24,11 +26,9 @@
   maintainerWeb       =       "https://github.com/CarlCzerny/Op-840"
   mutopiainstrument   =       "Piano"
 }
-
 RH= \relative c'' {
   %\accidentalStyle modern
   \key c \minor \time 3/8
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \mark \markup  "Andantino con moto."
   \override Fingering.direction = #UP
   \set fingeringOrientations = #'(left)
@@ -67,7 +67,7 @@ RH= \relative c'' {
   g( h,) r
   < f d' >4.( < es c' >8) r r^\markup "Fine."
   \bar ":..:"
-  \mark \markup { \bold "C Dur." \italic "(Ut majeur)" }
+  \mark \markup \fontsize #-1.5 { \bold "C Dur." \italic "(Ut majeur)" }
   \key c \major
   \set Timing.baseMoment = #(ly:make-moment 1/16)
   \set Staff.beatStructure = #'(2 2 2 )
@@ -104,7 +104,6 @@ LHI = \relative c' {
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(3 ) % abhängig vom Takt
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   c,4.
   s4. s d8\rest g-5( h-3 c4.-2)
   s s s
@@ -158,7 +157,9 @@ LHII = \relative c' {
   g16-1^( d-2 h-4 g-1 d h)
   s4.
   c4. f g4 \tweak Stem.transparent ##t g'8 < c, e>8
-  \once \override TextScript.extra-offset = #'( -10 . 0 )
+  %\once \override TextScript.extra-offset = #'( -10 . 0 )
+  \override TextScript.self-alignment-X = #RIGHT
+  \override TextScript.extra-offset = #'( 10 . 0 )
   c,4^>_\markup "D.C. sino al fine."
 }
 
@@ -167,7 +168,7 @@ LHII = \relative c' {
   \new PianoStaff \with {
     instrumentName = \markup {
       \center-column {
-        \line { \bold \huge { "№" } \number 3. }
+        \line { \bold \huge { "№" } \number { \exercise "." } }
         \line \large { C Moll }
         \italic \line { Ut mineur. }
       }
@@ -175,30 +176,16 @@ LHII = \relative c' {
     shortInstrumentName = ""
   }
   <<
-    \new Staff="Discant"
-    \with
-    {
-      \consists "Bar_number_engraver"
-      \override BarNumber.padding = #0
-      \override BarNumber.self-alignment-X = #CENTER
-      \override BarNumber.break-visibility = #end-of-line-invisible
-    }
-    {
-      <<
-        \set Staff.explicitKeySignatureVisibility = #begin-of-line-visible
-        \RH
-      >>
+    \new Staff="Discant" \RH
 
-    }
-    \new Staff="Bass" {
-      <<
-        \new Voice = "first"
-        \relative c'
-        \LHI
-        \new Voice= "second"
-        \LHII
-      >>
-    }
+    \new Staff="Bass"
+    <<
+      \new Voice = "first"
+      \relative c'
+      \LHI
+      \new Voice= "second"
+      \LHII
+    >>
   >>
   \layout { }
   \midi { }
