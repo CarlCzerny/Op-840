@@ -29,7 +29,6 @@ exercise ="8"
 RH= \relative c' {
   \time 2/4
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(2 2 2 2 )  %% abhängig vom Takt
@@ -65,7 +64,7 @@ RH= \relative c' {
   < e c' >8-. \ff < c-1 g'-4 >-. < g c e-5 >-. < f g h d >-. < e g c >_.
   \ottava #0 r r4^\markup { "Fine." } \bar ":..:"
   \key es \major
-  \mark \markup { \bold "C moll." \italic "(Ut mineur)" }
+  \mark \markup \fontsize #-1.5 { \bold "C moll." \italic "(Ut mineur)" }
   es-3-\markup { \dynamic p \italic dol. } ( c
   g'4.-> f8 es8-. ) [ es-. c-1-. c-2-. ]  < h-1 d-3 >2
   as'8-5-. [ as-3-. as-. as-. ]
@@ -81,7 +80,6 @@ RH= \relative c' {
 LH = \relative c {
   \clef bass
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
