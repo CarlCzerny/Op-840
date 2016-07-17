@@ -102,7 +102,7 @@ RH= \relative c''' {
   \once \override Slur.positions = #'(2.8 . 0.6)
   \bar ":..:"
   %\markup { \dynamic p \italic "dol." }
-  \mark \markup { \bold "A Dur." \italic "(La" \italic " majeur)" }
+  \mark \markup \fontsize #-1.5 { \bold "A Dur." \italic "(La majeur)" }
   \key a \major
   \set Staff.beatStructure = #'(4 )
   e4-3-\markup { \dynamic p \italic "dol." }a8-5 cis,-2
@@ -213,10 +213,6 @@ LH = \relative c' {
   >>
 }
 
-Struktur= {
-  s1*3
-}
-
 \score
 {
   \new PianoStaff \with {
@@ -236,10 +232,7 @@ Struktur= {
     \new Staff="Discant"
     \RH
     \new Staff="Bass"
-    <<
-      \new Voice \LH
-      \new Voice \Struktur
-    >>
+    \LH
   >>
   %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
