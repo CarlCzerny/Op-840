@@ -5,9 +5,9 @@
 \include "Papier+Layout.ly"
 \include "myScheme.ily"
 exercise ="17"
-
+%% wenn erforderlich linken Abstand ändern
 \paper {
-  left-margin = #10
+   left-margin = #10
 }
 \layout {
   \context {
@@ -46,13 +46,12 @@ myPattern = {
 }
 
 nyPattern = {
-  c32 ( c c c c [ c c c ] c16-.[ c-. c-. c-.] )
+  c32 ( c c c c [ c c c ] c16-.[ ) c-. c-. c-.]
 }
 
 RH= \relative c'' {
   \time 2/4
   \key f \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
@@ -64,13 +63,21 @@ RH= \relative c'' {
   \override Slur.direction = #UP
   \mark \markup "Allegretto."
   \changePitch \myPattern {
-    c-2 d-3 c-2 d-3 c-2 f-2 g f g f-2
+    c-2 d-3 c-2 d-3 c-2
+  }
+  \override Fingering.avoid-slur = #'around
+  \changePitch \myPattern {
+    f-2 g f g f-2
     g-2 a g a g-2 c-2 d c d c-2
   }
+  \override Fingering.avoid-slur = #'inside
   a32-2 ( c-4 b a b-2 c-1 d e f-4 e d c b-4 a g f )
   a4 ( g8 ) r
   \changePitch \nyPattern {
     f'-5 e-4 f e f e f e f g, g g
+  }
+  \override Fingering.avoid-slur = #'around
+  \changePitch \nyPattern {
     e'-5 dis e dis e dis e dis e g, g g
   }
   %\once \override Slur.positions = #'(2.8 . 0.6)
@@ -84,14 +91,15 @@ RH= \relative c'' {
   < e g>4 r16 g,-. c-. e-.
   < b g' >8-. q-. < a f' >-. q-.
   < g e'>4 r
+  \override Fingering.avoid-slur = #'inside
   \changePitch \myPattern {
     c'-1 d-2 c d c f-3 e f e f
     g,-1 fis-2 g-1 fis-2 g-1
     d'-5 cis d cis d
   }
   e,32-3 ( f g f e[ d c d ] e-3 f-1 g a b-4 [ c-1 d-2 e-3 ] )
-  f16-5-. c-. a-. c-. f,8 r^\markup "Fine."
-  \mark \markup { \bold "F Moll." \italic "(Fa" \italic " mineur)" }
+  f16-5-. c-. a-. c-. f,8 r^\markup "Fine." \bar ":..:"
+  \mark \markup \fontsize #-1.5 { \bold "F Moll." \italic "(Fa mineur)" }
   \key as \major
   as8-4-\markup { \dynamic p \italic "dol." } [ as16. ( g32 f8-. ) as-. ]
   g4-3 ( c )
@@ -122,7 +130,6 @@ CEG= { \repeat unfold 4 { c, e g } }
 LH = \relative c' {
   \clef bass
   \key f \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.4
@@ -238,9 +245,9 @@ Struktur= {
       \new Voice \Struktur
     >>
   >>
- 
+  %% Falls erforderlich Zeilenlänge und Einzug ändern
   \layout {
-     line-width = #190
+    line-width = #190
   }
   \midi { }
 }
