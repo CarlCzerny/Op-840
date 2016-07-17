@@ -56,7 +56,6 @@ uPatternI = { c8-. c-. c-. c-. }
 RH= \relative c' {
   \time 4/4
   \key f \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(2 2 2 2)  %% abhängig vom Takt
@@ -115,7 +114,6 @@ RH= \relative c' {
     r < e g-4 > r q r < d f-3 > r q r < cis e-4 > r q r q r q
   }
   \set fingeringOrientations = #'(left)     %% für Akkorde!
-  %\override Beam.positions = #'(8 . 8)
   \revert Beam.positions
   \override Beam.positions = #'(-3 . -3)
   \stemNeutral
@@ -149,7 +147,7 @@ RH= \relative c' {
   d-3 a-1 d-2 f-4 a f a f d8 r
   r4^\markup "Fine." \bar ":..:"
   \key d \major
-  \mark \markup { \bold "D Dur." \italic "(Ré" \italic " majeur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "D Dur." \italic "(Ré majeur.)" }
   fis8-5-._\markup { \dynamic p \italic "dol." } r fis-. r fis-. r h,16-4 ( a-3 gis-2 a-1
   fis'8 ) r fis r fis r h,16-4 ( a gis a-1
   d8.-2 fis16-4 a8.-1 d16-2 ) \ottava #1 fis4-3 ( g16-4 fis e d
@@ -301,7 +299,7 @@ Struktur= {
   s1*3 \break
   s1*3 \break
 }
-EtudeXXXXVIII=
+
 \score
 {
   \new PianoStaff \with {
@@ -330,5 +328,5 @@ EtudeXXXXVIII=
 
     line-width = #190
   }
- \midi { }
+  \midi { }
 }
