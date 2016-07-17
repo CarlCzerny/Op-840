@@ -46,7 +46,6 @@ exercise ="5"
 RH= \relative c'' {
   \time 2/4
   \key c \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(1 1 1 1 ) % abhängig vom Takt
@@ -89,7 +88,7 @@ RH= \relative c'' {
   c-1 d e f-1 g a h c c,8 \ottava #0 r8^\markup "Fine." \bar ":..:"
   \key es \major
   \set Staff.beatStructure = #'(4 )
-  \mark \markup { \bold "C moll." \italic "(Ut mineur)" }
+  \mark \markup \fontsize #-1.5 { \bold "C moll." \italic "(Ut mineur)" }
   es,4-3-\markup { \dynamic p \italic \large dol. } ( f16 es d c )
   a'4-3 ( b16 a g f )
   es8-2 ( d g d )
@@ -136,7 +135,6 @@ LHI = \relative c' {
   \set fingeringOrientations = #'(up)
   \override Fingering.direction = #DOWN
   \override Fingering.staff-padding = #'()
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \clef treble
   c8 < e g > q q h < f' g > q q
   c < e g > d < fis c' > h s8 s4
