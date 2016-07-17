@@ -38,8 +38,7 @@ exercise ="2"
 RH= \relative c'' {
   \time 6/8
   \key f \major \partial 8
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
-  \mark \markup  "Allegretto animato"
+  \mark \markup  "Allegretto animato."
   \once \override Voice.Slur #'positions = #'(2.8 . 0.6)
   \once \override TextScript.extra-offset = #'( -16.5 . 3.5 )
   c8-.-1
@@ -64,7 +63,7 @@ RH= \relative c'' {
   \grace { c32 d } c8(-2 a-1-.)-. a'-.-5 \grace { b,32 c } b8(-2 g-.)-. g'-.
   \grace { a,32 b } a8(-2 f-.)-. f'-. \grace { g,32 a } g8(-2 e-.)-. e'-.-4
   f-5-. c-. a-. f-. r^\markup { "Fine." }
-  \mark \markup { \bold "B Dur." \italic "(Si" \super \flat \italic " majeur)" }
+  \mark \markup \fontsize #-1.5 { \bold "B Dur." \italic "(Si" \super \flat \italic " majeur)" }
   \bar ":..:"
   \key b \major
   f,8 < d'-4 f-5 >4.( < b-2 d-4 >8)-. q q
@@ -76,7 +75,7 @@ RH= \relative c'' {
   f a c f c a f8 r8 \ottava #0
   \bar ":..:"
   g'16-5(\p f es! d c-1 b-4 a g f-1 e-3 d c-1 b-2 a)
-  b-2( c b a b d-4 \autoBeamOff f8-5-.) \autoBeamOn b16-3(_\markup { \italic \small "cresc." } c d c
+  b-2( c b a b d-4 \autoBeamOff f8-5-.) \autoBeamOn b16-3(_\markup { \italic "cresc." } c d c
   b a g-1 f-4 e d c-1 b-4 a g f-1 e-2)
   f-1 fis-2 g-1 gis-2 a-1 b-2 h-1 c-2 cis-3 d-1 es-3 e-4
   < d-3 f-5 >4.( < b-2 d-4 >8-.) < c-1 es!-3 >-. < d f >-.
@@ -94,7 +93,6 @@ LHI = \relative c {
   \set fingeringOrientations = #'(down)
   \override Fingering.direction = #DOWN
   \override Fingering.staff-padding = #'()
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   d8\rest
   f a c e, b' c
   f, a c f, a c
