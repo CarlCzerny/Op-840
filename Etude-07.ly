@@ -3,7 +3,15 @@
 \language "deutsch"
 
 \include "Papier+Layout.ly"
-
+%% wenn erforderlich linken Abstand ändern
+\paper {
+  %% hier für den Fall, dass Änderungen erforderlich sind
+  %left-margin = #15
+  %top-margin = #20
+  %system-system-spacing.basic-distance = #8
+  %min-systems-per-page = #6
+}
+%#(set-global-staff-size 21)
 exercise ="7"
 
 \header {
@@ -32,7 +40,6 @@ exercise ="7"
 RH= \relative c'' {
   \time 2/4
   \key g \major \partial 8
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/8)
   \set Staff.beatStructure = #'(4)  %% abhängig vom Takt
@@ -81,7 +88,7 @@ RH= \relative c'' {
   a8-.[ e' ( d-. ) fis,-2] g4-. r8^\markup "Fine."
   \bar ":..:" \break
   %\autoBeamOff f,,8_\markup { \italic \small "cresc." }  f8 f8 f8 \autoBeamOn
-  \mark \markup { \bold "G Moll." \italic "(Sol mineur)" }
+  \mark \markup \fontsize #-1.5 { \bold "G Moll." \italic "(Sol mineur)" }
   \key b \major
   d8~\p < d b' >-.[_( q r < c es a >-.] )
   r < b d g >[_( r < a d fis >-.] )
@@ -119,7 +126,6 @@ LH = \relative c' {
 
   \mergeDifferentlyHeadedOn
   \mergeDifferentlyDottedOn
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.2
