@@ -3,7 +3,7 @@
 FootLeft = #(string-append "" )
 FootCenter = #(string-append "")
 FootLeft = #(string-append "gesetzt mit LILYPOND " (lilypond-version) " am " (strftime "%d.%m.%Y %H:%M:%S" (localtime (current-time))))
-#(set-global-staff-size 22)
+#(set-global-staff-size 20)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A function to modify the shape of slurs by offsetting the positions property
