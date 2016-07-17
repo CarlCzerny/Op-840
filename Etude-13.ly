@@ -8,7 +8,6 @@
   left-margin = 10
 }
 exercise ="13"
-%#(set-global-staff-size 20)
 
 \header {
   composer            =       \markup { \bold "Carl Czerny" " (* 21. Februar 1791; † 15. Juli 1857)" }
@@ -19,7 +18,7 @@ exercise ="13"
 
   opus                =       "Op. 840"
   piece               =       \markup { "Op:" \number \tiny 840 "Etüde" \number \tiny \exercise }
-  mutopiaopus         =       "840, No." \exercise
+  mutopiaopus         =       "840, No. 13"
 
   source              =       "IMSLP; Mainz: Schott, n.d.[1855]. Plate 13253"
   style               =       "Romantic"
@@ -49,7 +48,6 @@ myPatternIV = { c16 ( c c c c8-.\noBeam ) }
 RH= \relative c'' {
   \time 4/4
   \key f \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
@@ -84,7 +82,7 @@ RH= \relative c'' {
   \key d \major
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(2 2 )  %% abhängig vom Takt
-  \mark \markup { \bold "D Dur." \italic "(Re" \italic " majeur.)" }
+  \mark \markup \fontsize #-1.5 { \bold "D Dur." \italic "(Re majeur.)" }
   a4-1_\markup { \dynamic p \italic "dol." } (
   fis'4.-4 e8 d ) r a4 (
   fis'4. e8 d ) r a4
@@ -119,7 +117,6 @@ RH= \relative c'' {
 LH = \relative c' {
   \clef bass
   \key f \major
-  \set Staff.explicitKeySignatureVisibility = #end-of-line-invisible
   \set fingeringOrientations = #'(left) %% für Akkorde!
   \override Fingering.direction = #UP  %% für Einzelnoten!
   \override Fingering.padding = #0.4
@@ -129,6 +126,8 @@ LH = \relative c' {
   \set Timing.beamExceptions = #'()
   \set Timing.baseMoment = #(ly:make-moment 1/4)
   \set Staff.beatStructure = #'(1 1 1 1 )  %% abhängig vom Takt
+  \mergeDifferentlyHeadedOn
+  \mergeDifferentlyDottedOn
   \partial 4
   r4
   d,16 a' f a d, a' f a c, a' f a d, a' f a
@@ -151,8 +150,6 @@ LH = \relative c' {
   <<
     \relative c {
       \voiceOne
-      \mergeDifferentlyHeadedOn
-      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -201,8 +198,6 @@ LH = \relative c' {
   <<
     \relative c {
       \voiceOne
-      \mergeDifferentlyHeadedOn
-      \mergeDifferentlyDottedOn
       \set fingeringOrientations = #'(left)   %% Akkorde
       \override Fingering.direction = #UP %% Einzelnoten
       \override Fingering.padding = #0.2
@@ -229,11 +224,7 @@ LH = \relative c' {
       \set Timing.beamExceptions = #'()
       \set Timing.baseMoment = #(ly:make-moment 1/4)
       \set Staff.beatStructure = #'(2 2 )  %% abhängig vom Takt
-      \override TextScript.self-alignment-X = #RIGHT
-      d2 d g, g a a d
-      \override TextScript.self-alignment-X = #RIGHT
-      \override TextScript.extra-offset = #'( 3 . 0 )
-      d4_\markup "D.C. sino al fine."
+      d2 d g, g a a d_\markup "D.C. sino al fine." d4
     }
   >>
 }
@@ -256,11 +247,15 @@ LH = \relative c' {
   <<
     \new Staff="Discant"
     \RH
-    \new Staff="Bass"
-    \LH
+    \new Staff="Bass" \LH
   >>
   \layout {
-
+    ragged-last-bottom = ##t
+    ragged-last = ##t
+    ragged-right = ##f
+    ragged-bottom = ##t
+    left-margin = #10
+    line-width = #190
   }
   \midi { }
 }
