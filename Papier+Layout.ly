@@ -57,5 +57,6 @@ offsetPositions =
     \override RehearsalMark.self-alignment-X = #LEFT
     \override KeyCancellation.break-visibility = #'#(#f #t #t)
     \override TextScript.self-alignment-X = #LEFT
+    \override RehearsalMark.break-visibility = #begin-of-line-invisible
   }
 }
