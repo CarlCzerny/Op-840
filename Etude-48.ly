@@ -15,7 +15,7 @@ exercise ="48"
   mutopiacomposer     =       "CzernyC"
 
   title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
-  title               =       "50 Melodische Übungsstücke" %"50 Melodische Übungsstücke"
+ 
   mutopiatitle        =       \markup { "50 Melodische Übungsstücke, No." \exercise }
 
   opus                =       "Op. 840"
